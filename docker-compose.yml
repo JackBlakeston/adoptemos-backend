@@ -18,6 +18,7 @@ services:
       - mongodb
     image: adoptemos-server
     restart: unless-stopped
+    container_name: adoptemos-server
     env_file: ./.env
     ports:
       - $NODE_PORT:$NODE_PORT

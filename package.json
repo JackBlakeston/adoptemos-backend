@@ -17,13 +17,14 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
-    "docker-start": "npm run docker-build -s && npm run docker-up -s",
-    "docker-start-quiet": "npm run docker-build-quiet -s && npm run docker-up-quiet -s",
+    "docker-start": "npm run docker-build -s && npm run docker-up -s && npm run docker-image-prune-silent -s",
+    "docker-start-quiet": "npm run docker-build-quiet -s && npm run docker-up-quiet -s && npm run docker-image-prune-silent -s",
     "docker-build": "docker build -t adoptemos-server .",
     "docker-build-quiet": "echo \"Building docker image 🏗\" && echo \"...\" && docker build -q > /dev/null -t adoptemos-server . && echo \"Docker image build successful ✅\n\"",
     "docker-up": "docker-compose up -d",
     "docker-up-quiet": "echo \"Starting docker containers 📦\" && echo \"...\" && docker-compose up -d > /dev/null 2>&1 && echo \"Docker containers started successfully ✅\n\"",
-    "docker-down": "docker-compose down"
+    "docker-down": "docker-compose down",
+    "docker-image-prune-silent": "docker image prune -f > /dev/null"
   },
   "repository": {
     "type": "git",

@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 // Start the Express server
 const port = process.env.NODE_DOCKER_PORT || 8080;
 app.listen(port, () => {
-  console.log('WE FLYIN');
+  console.log('WE FLYING YEAH!');
   console.log('mongo url is ', mongoUrl);
   console.log(`Server is running on port ${port}`);
 });
