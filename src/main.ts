@@ -1,8 +1,8 @@
+/* eslint-disable no-console */
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { MONGODB_URL } from './config/db.config';
-import { config } from 'dotenv';
 
 // Import your API routes and controllers here
 // Example:

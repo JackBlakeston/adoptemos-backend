@@ -2,9 +2,65 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "plugins": ["@typescript-eslint", "prettier"],
-  "rules": {}
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-unused-expressions": "warn",
+    "prefer-const": "warn",
+    "no-param-reassign": "error",
+    "no-else-return": "warn",
+    "consistent-return": "error",
+    "no-return-assign": "error",
+    "no-use-before-define": "error",
+    "no-shadow": "warn",
+    "no-console": "warn",
+    "no-empty-function": "warn",
+    "max-params": ["warn", 4],
+    "max-depth": ["error", 5],
+    // "@limegrass/import-alias/import-alias": "warn",
+    // "simple-import-sort/imports": [
+    //   "warn",
+    //   {
+    //     "groups": [
+    //       // Preact and external libraries
+    //       ["^preact", "^@?\\w"],
+    //       // Components
+    //       [
+    //         "^@atoms(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
+    //         "^@molecules(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
+    //         "^@organisms(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
+    //         "^@templates(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
+    //         "^@pages(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
+    //         "^@pages/.*/lib/(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/).)*$",
+    //         "^(?:(?!/use|/utils/|/context/).)*/components/(?:(?!.styles|.scss|.const|/types/|/use|/utils/|/context/).)*$"
+    //       ],
+    //       // Hooks, utils and context
+    //       [
+    //         "^@hooks(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
+    //         "^(?:(?!/utils/|/context/).)*/use(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
+    //         "@utils(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
+    //         "^(?:(?!/context/).)*/utils/(?:(?!.styles|.scss|.const|/types/|/context/).)*$",
+    //         "@context(?:(?!.styles|.scss|.const|/types/|/context/).)*$",
+    //         "(/context/)(?:(?!.styles|.scss|.const|/types/).)*$"
+    //       ],
+    //       // Constants, types and other non-matched imports
+    //       ["@const", ".const", "@types", "/types/", "^\\u0000"],
+    //       // NGE web components
+    //       ["@no-gravity-elements", "/lib/"],
+    //       // Styles
+    //       [".styles", ".scss"]
+    //     ]
+    //   }
+    // ],
+    // "import/order": "off",
+    "padding-line-between-statements": [
+      "warn",
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" }
+    ]
+  }
 }
