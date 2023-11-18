@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { mongoUrl } from './config/db.config';
+import { MONGODB_URL } from './config/db.config';
 import { config } from 'dotenv';
 
 // Import your API routes and controllers here
@@ -16,7 +16,7 @@ app.use(express.json()); // Parse JSON request bodies
 app.use(cors()); // Enable Cross-Origin Resource Sharing (CORS)
 
 // Connect to MongoDB using Mongoose
-mongoose.connect(mongoUrl);
+mongoose.connect(MONGODB_URL);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -34,9 +34,9 @@ app.get('/', (req, res) => {
 });
 
 // Start the Express server
-const port = process.env.NODE_DOCKER_PORT || 8080;
-app.listen(port, () => {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
   console.log('WE FLYING YEAH!');
-  console.log('mongo url is ', mongoUrl);
-  console.log(`Server is running on port ${port}`);
+  console.log('mongo url is ', MONGODB_URL);
+  console.log(`Server is running on port ${PORT}`);
 });
