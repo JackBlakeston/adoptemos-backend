@@ -30,7 +30,7 @@ db.once('open', () => {
 
 // Define a default route
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Welcome to the Dog Adoption API!' });
+  res.status(200).json({ message: 'Welcome to the Dog Adoption API v2!' });
 });
 
 // Start the Express server
