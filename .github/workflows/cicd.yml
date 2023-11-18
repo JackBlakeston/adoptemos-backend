@@ -1,4 +1,4 @@
-name: Branch push workflow
+name: CICD workflow
 
 on: push
 
@@ -54,3 +54,19 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: adoptemos-server
+          heroku_email: "jackblakeston93@gmail.com"
