@@ -1,6 +1,9 @@
 name: CICD workflow
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   install:
@@ -57,7 +60,6 @@ jobs:
 
   deploy:
     needs: test
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
