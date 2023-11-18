@@ -1,8 +1,8 @@
-name: Adoptemos Backend CICD
+name: CICD workflow
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
@@ -23,12 +23,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18.14.0
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
-
 
   build:
     runs-on: ubuntu-latest
@@ -58,18 +57,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: adoptemos-server
-          heroku_email: "jackblakeston93@gmail.com"
