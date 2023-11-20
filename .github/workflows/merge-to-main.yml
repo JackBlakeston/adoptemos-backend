@@ -21,7 +21,7 @@ jobs:
           key: modules-${{ hashFiles('package-lock.json') }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.14.0
 
@@ -66,9 +66,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Login to Heroku Container Registry
+        run: heroku container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: "jackblakeston93@gmail.com"
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t registry.heroku.com/adoptemos-server/web .
+          docker push registry.heroku.com/adoptemos-server/web
+
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: adoptemos-server
-          heroku_email: "jackblakeston93@gmail.com"
+        run: |
+          HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }}  heroku container:release web -a adoptemos-server
