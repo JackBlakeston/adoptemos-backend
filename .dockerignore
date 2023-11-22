@@ -5,3 +5,5 @@ npm-debug.log
 .timing
 .npmrc
 .env
+.env.sample
+.github

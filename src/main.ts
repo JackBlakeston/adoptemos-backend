@@ -11,4 +11,7 @@ db.connect();
 const PORT = process.env.PORT || 8080;
 server.start(PORT, () => {
   console.log(`The doggie dog server is running on port ${PORT}`);
+  const { MONGODB_USER, MONGODB_PASSWORD, MONGODB_HOST, IS_PROD } = process.env;
+
+  console.log({ MONGODB_USER, MONGODB_PASSWORD, MONGODB_HOST, IS_PROD });
 });

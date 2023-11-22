@@ -21,7 +21,7 @@ services:
     container_name: adoptemos-server
     env_file: ./.env
     ports:
-      - $PORT:$PORT
+      - 8080:$PORT
     stdin_open: true
     tty: true
 
