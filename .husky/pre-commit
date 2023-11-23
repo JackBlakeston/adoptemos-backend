@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+LOG_FILE=".husky/pre-commit.log"
+
+exec > "$LOG_FILE" 2>&1
+
+npm run typescript
+npm run lint
+
+echo "Pre-commit checks completed. Check $LOG_FILE for details."
