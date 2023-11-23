@@ -1,0 +1,16 @@
+name: On feature branch push
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+
+  test:
+    needs: build
+    uses: ./.github/workflows/tests.yml
+    secrets: inherit

@@ -1,6 +1,6 @@
 FROM node:18.14.0 AS build
 
-WORKDIR /adoptemos-app
+WORKDIR /adoptemos-server
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -9,9 +9,9 @@ RUN npm run build
 
 FROM node:18.14.0-slim
 
-WORKDIR /adoptemos-app
-COPY --from=build /adoptemos-app ./
+WORKDIR /adoptemos-server
+COPY --from=build /adoptemos-server ./
 
-EXPOSE 8060
+EXPOSE 8080
 
 CMD npm start

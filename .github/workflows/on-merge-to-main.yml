@@ -1,0 +1,26 @@
+name: On main branch merge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+
+  validate:
+    needs: build
+    uses: ./.github/workflows/validate-code.yml
+    secrets: inherit
+
+  test:
+    needs: build
+    uses: ./.github/workflows/tests.yml
+    secrets: inherit
+
+  deploy:
+    needs: [validate, test]
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit

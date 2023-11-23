@@ -1,0 +1,18 @@
+name: "Load image"
+description: "Downloads docker image of project"
+inputs:
+   image-name:
+     required: true
+     description: "The name of the image that will be downloaded"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get docker image
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ inputs.image-name }}
+        path: /tmp
+    - name: Load image
+      run: docker load --input /tmp/${{ inputs.image-name }}.tar
+      shell: bash

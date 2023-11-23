@@ -1,0 +1,19 @@
+name: Validate code
+on:
+  workflow_call:
+jobs:
+  validate-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up docker containers
+        uses: ./.github/actions/run-containers
+        with:
+          image-name: ${{ secrets.APP_NAME }}
+      - name: Run tsc
+        run: |
+          docker exec ${{ secrets.APP_NAME }} npm run typescript
+      - name: Run lint
+        run: |
+          docker exec ${{ secrets.APP_NAME }} npm run lint

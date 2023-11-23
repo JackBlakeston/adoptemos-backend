@@ -1,0 +1,23 @@
+name: Deploy
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Heroku Container Registry
+        run: heroku container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t registry.heroku.com/${{ secrets.APP_NAME }}/web -f dockerfiles/Dockerfile.deploy .
+          docker push registry.heroku.com/${{ secrets.APP_NAME }}/web
+
+      - name: Deploy to Heroku
+        run: |
+          HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }}  heroku container:release web -a ${{ secrets.APP_NAME }}
