@@ -1,9 +1,9 @@
-import { Dog } from '../domain/entities/Dog';
+import { Dog } from '../domain/entities/Dog/Dog';
 
 export interface DogRepository {
-  findById: (id: string) => Promise<Dog | null>;
-  findAll: () => Promise<Dog[]>;
-  create: (dog: Dog) => Promise<Dog>;
-  update: (id: string, dog: Dog) => Promise<Dog | null>;
-  delete: (id: string) => Promise<void>;
+  findDogById: (id: string) => Promise<Dog | null>;
+  getAllDogs: () => Promise<Dog[]>;
+  createDog: (dog: Dog) => Promise<Dog>;
+  updateDog: (id: string, dog: Dog) => Promise<Dog | null>;
+  deleteDog: (id: string) => Promise<void>;
 }

@@ -6,6 +6,8 @@ import {
   getSuccessResponseObject,
 } from './utils/testing/ControllerTestingUtils';
 import { NotFoundError } from 'src/errors/NotFoundError/NotFoundError';
+import { MockController, MockRepositoryImpl } from 'src/fixtures/ClassMocks';
+import { MockModel } from 'src/fixtures/ModelMocks';
 
 describe('BaseController', () => {
   const mockData = { color: 'red' };
@@ -16,6 +18,17 @@ describe('BaseController', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     mockRes = getMockResponse();
+  });
+
+  describe('extended to create a controller class', () => {
+    describe('WHEN instantiating the extended controller class', () => {
+      it('should set the repository prop correctly', () => {
+        const mockRepository = new MockRepositoryImpl(MockModel);
+        const mockController = new MockController(mockRepository);
+
+        expect(mockController).toHaveProperty('repository', mockRepository);
+      });
+    });
   });
 
   describe('sendSuccessResponse method', () => {

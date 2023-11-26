@@ -1,4 +1,4 @@
-import { BaseEntity } from './baseEntity/BaseEntity';
+import { BaseEntity } from '../BaseEntity';
 
 export class Dog extends BaseEntity {
   id!: string;

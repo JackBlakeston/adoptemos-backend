@@ -1,6 +1,6 @@
 import express, { RequestHandler } from 'express';
 import { BaseController } from 'src/application/controllers/BaseController';
-import { BaseEntity } from 'src/core/domain/entities/baseEntity/BaseEntity';
+import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
 import { BaseRepositoryImpl } from 'src/infrastructure/repositories/baseRepositoryImpl/BaseRepositoryImpl';
 import { HttpMethods, Url } from 'src/infrastructure/routes/Routes.types';
 

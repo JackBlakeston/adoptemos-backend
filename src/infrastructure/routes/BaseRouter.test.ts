@@ -19,9 +19,10 @@ describe('BaseRouter', () => {
     [Get, mockUrl, mockGetHandler],
     [Post, mockUrl, mockValidateHandler, mockPostHandler],
   ];
+  const mockController = new MockController(new MockRepositoryImpl(MockModel));
   class MockRouter extends BaseRouter<MockEntity, MockController> {
     constructor() {
-      super(new MockController(new MockRepositoryImpl(MockModel)));
+      super(mockController);
       this.createRoutes(mockRoutes);
     }
   }
@@ -30,8 +31,20 @@ describe('BaseRouter', () => {
     jest.resetAllMocks();
   });
 
-  describe('extended to create a router', () => {
-    describe('WHEN creating an entity', () => {
+  describe('extended to create a router class', () => {
+    describe('WHEN creating an instance of the extended router class', () => {
+      it('should set the controller prop', () => {
+        const mockRouter = new MockRouter();
+
+        expect(mockRouter).toHaveProperty('controller', mockController);
+      });
+
+      it('should create an express router and assign it to the router prop', () => {
+        const mockRouter = new MockRouter();
+
+        expect(mockRouter.router.toString()).toEqual(Router().toString());
+      });
+
       it('should call the correct method of express router with the correct parameters', async () => {
         const mockExpressRouterGet = jest.fn();
         const mockExpressRouterPost = jest.fn();

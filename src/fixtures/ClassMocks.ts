@@ -1,11 +1,12 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { BaseController } from 'src/application/controllers/BaseController';
 import { BaseDTO } from 'src/application/dtos/baseDTO/BaseDTO';
-import { BaseEntity } from 'src/core/domain/entities/baseEntity/BaseEntity';
+import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
+import { BaseUseCase } from 'src/core/domain/useCases/BaseUseCase';
 import { BaseRepositoryImpl } from 'src/infrastructure/repositories/baseRepositoryImpl/BaseRepositoryImpl';
 
 export class MockEntity extends BaseEntity {
-  name!: string;
+  requiredField!: string;
 
   constructor(data: MockEntity) {
     super(data);
@@ -13,6 +14,8 @@ export class MockEntity extends BaseEntity {
 }
 
 export class MockRepositoryImpl extends BaseRepositoryImpl<MockEntity> {}
+
+export class MockUseCase extends BaseUseCase<MockEntity, MockRepositoryImpl> {}
 
 export class MockController extends BaseController<MockEntity, MockRepositoryImpl> {}
 

@@ -1,12 +1,12 @@
 import { DogRepository } from 'src/core/repositories/DogRepository';
 import { CreateDogDTO } from '../../application/dtos/createDogDTO';
-import { Dog } from 'src/core/domain/entities/Dog';
+import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import { BaseRepositoryImpl } from './baseRepositoryImpl/BaseRepositoryImpl';
 
 export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRepository {
-  async create(dogData: CreateDogDTO): Promise<Dog> {
+  async createDog(dogDTO: CreateDogDTO): Promise<Dog> {
     try {
-      const createdDog = new this.model(dogData);
+      const createdDog = new this.model(dogDTO);
       const savedDog = await createdDog.save();
       return savedDog.toObject();
     } catch {
@@ -14,7 +14,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async findById(id: string): Promise<Dog | null> {
+  async findDogById(id: string): Promise<Dog | null> {
     try {
       const dog = await this.model.findById(id).exec();
       return dog ? dog.toObject() : null;
@@ -23,7 +23,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async findAll(): Promise<Dog[]> {
+  async getAllDogs(): Promise<Dog[]> {
     try {
       const dogs = await this.model.find().exec();
       return dogs.map((dog) => dog.toObject());
@@ -32,7 +32,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async update(id: string, dogData: CreateDogDTO): Promise<Dog | null> {
+  async updateDog(id: string, dogData: CreateDogDTO): Promise<Dog | null> {
     try {
       const updatedDog = await this.model
         .findByIdAndUpdate(id, dogData, {
@@ -46,7 +46,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async delete(id: string): Promise<void> {
+  async deleteDog(id: string): Promise<void> {
     try {
       await this.model.findByIdAndRemove(id).exec();
     } catch (error) {
