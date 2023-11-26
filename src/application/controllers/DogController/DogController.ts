@@ -4,7 +4,7 @@ import { DogRepositoryImpl } from '../../../infrastructure/repositories/DogRepos
 import { Dog } from '../../../core/domain/entities/Dog/Dog';
 import { CreateDogDTO } from '../../dtos/createDogDTO';
 import { BaseController } from '../BaseController';
-import { DogUseCases } from '../../../core/domain/useCases/DogUseCases/DogUseCases';
+import { DogUseCases } from 'src/core/domain/useCases/DogUseCases/DogUseCases';
 
 export class DogController extends BaseController<Dog, DogRepositoryImpl> {
   constructor(dogModel: Model<Dog>) {

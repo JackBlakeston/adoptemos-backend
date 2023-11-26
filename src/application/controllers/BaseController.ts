@@ -1,8 +1,9 @@
 import { BaseRepositoryImpl } from 'src/infrastructure/repositories/baseRepositoryImpl/BaseRepositoryImpl';
 import { Response } from 'express';
 import { BaseError } from 'src/errors/BaseError';
+import { BaseEntity } from 'src/core/domain/entities/baseEntity/BaseEntity';
 
-export class BaseController<K, T extends BaseRepositoryImpl<K>> {
+export class BaseController<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
   protected repository: T;
 
   constructor(repository: T) {
@@ -16,8 +17,8 @@ export class BaseController<K, T extends BaseRepositoryImpl<K>> {
 
   static sendErrorResponse = (res: Response, error: unknown): void => {
     const isError = error instanceof Error;
-
     const isHandledError = error instanceof BaseError;
+
     const status = isHandledError ? error.statusCode : 500;
     const responseBody = {
       message: isError ? error.message : 'An unknown error has ocurred',
