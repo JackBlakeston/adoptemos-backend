@@ -1,11 +1,11 @@
 import { ValidationError, validate } from 'class-validator';
 import { BadRequestError } from 'src/errors/BadRequestError/BadRequestError';
-import { BaseDTO } from '../../dtos/baseDTO/BaseDTO';
+import { BaseDto } from '../../dtos/BaseDto';
 import { NextFunction, Request, Response } from 'express';
 import { BaseController } from '../../controllers/BaseController';
 
-export class DTOValidator<T extends typeof BaseDTO> {
-  private dtoClass: typeof BaseDTO;
+export class DtoValidator<T extends typeof BaseDto> {
+  private dtoClass: typeof BaseDto;
 
   constructor(dtoClass: T) {
     this.dtoClass = dtoClass;
@@ -21,7 +21,7 @@ export class DTOValidator<T extends typeof BaseDTO> {
     return `Errors in request body: ${validationErrors.join(', ')}`;
   };
 
-  validateDTO = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  validateDto = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     req.body = new this.dtoClass(req.body);
     const errors = await validate(req.body);
 

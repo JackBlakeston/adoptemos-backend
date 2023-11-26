@@ -1,12 +1,12 @@
 import { DogRepository } from 'src/core/repositories/DogRepository';
-import { CreateDogDTO } from '../../application/dtos/createDogDTO';
+import { CreateDogDto } from '../../application/dtos/Dog/CreateDogDto/CreateDogDto';
 import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import { BaseRepositoryImpl } from './baseRepositoryImpl/BaseRepositoryImpl';
 
 export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRepository {
-  async createDog(dogDTO: CreateDogDTO): Promise<Dog> {
+  async createDog(dogDto: CreateDogDto): Promise<Dog> {
     try {
-      const createdDog = new this.model(dogDTO);
+      const createdDog = new this.model(dogDto);
       const savedDog = await createdDog.save();
       return savedDog.toObject();
     } catch {
@@ -32,7 +32,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async updateDog(id: string, dogData: CreateDogDTO): Promise<Dog | null> {
+  async updateDog(id: string, dogData: CreateDogDto): Promise<Dog | null> {
     try {
       const updatedDog = await this.model
         .findByIdAndUpdate(id, dogData, {

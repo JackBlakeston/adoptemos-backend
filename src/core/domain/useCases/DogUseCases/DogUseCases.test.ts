@@ -1,7 +1,7 @@
 import { DogModel } from 'src/infrastructure/database/models/Dog.model';
 import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepositoryImpl';
 import { DogUseCases } from './DogUseCases';
-import { CreateDogDTO } from 'src/application/dtos/createDogDTO';
+import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
 
 describe('DogUseCases', () => {
   const mockDogData = { id: '42', name: 'Bob', breed: 'Spaniel' };
@@ -11,13 +11,13 @@ describe('DogUseCases', () => {
   describe('createDog method', () => {
     describe('WHEN invoked', () => {
       it('should call the repository createDog method with a dog entity created from the DTO and return the result', async () => {
-        const mockDogDTO = new CreateDogDTO(mockDogData);
+        const mockDogDto = new CreateDogDto(mockDogData);
         const dogRepositoryCreateSpy = jest.spyOn(DogRepositoryImpl.prototype, 'createDog');
-        dogRepositoryCreateSpy.mockImplementation(async (dogDTO: CreateDogDTO) => {
-          return dogDTO;
+        dogRepositoryCreateSpy.mockImplementation(async (dogDto: CreateDogDto) => {
+          return dogDto;
         });
 
-        const result = await mockDogUseCases.createDog(mockDogDTO);
+        const result = await mockDogUseCases.createDog(mockDogDto);
 
         expect(dogRepositoryCreateSpy).toHaveBeenCalledWith(mockDogData);
         expect(result).toEqual(mockDogData);

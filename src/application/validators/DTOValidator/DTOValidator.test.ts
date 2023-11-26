@@ -1,9 +1,9 @@
-import { MockDTO } from 'src/fixtures/ClassMocks';
-import { DTOValidator } from './DTOValidator';
+import { MockDto } from 'src/fixtures/ClassMocks';
+import { DtoValidator } from './DtoValidator';
 import { getMockRequest, getMockResponse } from '../../controllers/utils/testing/ControllerTestingUtils';
 import { Request, Response } from 'express';
 
-describe('DTOValidator', () => {
+describe('DtoValidator', () => {
   let mockReq: Request;
   let mockRes: Response;
   const mockNext = jest.fn();
@@ -13,7 +13,7 @@ describe('DTOValidator', () => {
     mockRes = getMockResponse();
   });
 
-  describe('validateDTO method', () => {
+  describe('validateDto method', () => {
     describe('WHEN request body is valid', () => {
       it('should call the next function and should not send a response', async () => {
         const mockRequestBody = {
@@ -21,8 +21,8 @@ describe('DTOValidator', () => {
         };
         mockReq = getMockRequest(mockRequestBody);
 
-        const validator = new DTOValidator(MockDTO);
-        await validator.validateDTO(mockReq, mockRes, mockNext);
+        const validator = new DtoValidator(MockDto);
+        await validator.validateDto(mockReq, mockRes, mockNext);
 
         expect(mockNext).toHaveBeenCalledWith();
         expect(mockRes.send).not.toHaveBeenCalled();
@@ -34,8 +34,8 @@ describe('DTOValidator', () => {
         const mockRequestBody = {};
         mockReq = getMockRequest(mockRequestBody);
 
-        const validator = new DTOValidator(MockDTO);
-        await validator.validateDTO(mockReq, mockRes, mockNext);
+        const validator = new DtoValidator(MockDto);
+        await validator.validateDto(mockReq, mockRes, mockNext);
 
         expect(mockNext).not.toHaveBeenCalled();
         expect(mockRes.status).toHaveBeenCalledWith(400);
