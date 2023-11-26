@@ -22,7 +22,7 @@ describe('BaseController', () => {
 
   describe('extended to create a controller class', () => {
     describe('WHEN instantiating the extended controller class', () => {
-      it('should set the repository prop correctly', () => {
+      it('should set the repository prop', () => {
         const mockRepository = new MockRepositoryImpl(MockModel);
         const mockController = new MockController(mockRepository);
 

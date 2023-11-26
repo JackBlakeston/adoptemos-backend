@@ -3,7 +3,7 @@ import { BaseController } from 'src/application/controllers/BaseController';
 import { BaseDto } from 'src/application/dtos/BaseDto';
 import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
 import { BaseUseCase } from 'src/core/domain/useCases/BaseUseCase';
-import { BaseRepositoryImpl } from 'src/infrastructure/repositories/baseRepositoryImpl/BaseRepositoryImpl';
+import { BaseRepositoryImpl } from 'src/infrastructure/repositories/BaseRepositoryImpl';
 
 export class MockEntity extends BaseEntity {
   requiredField!: string;

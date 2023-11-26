@@ -1,5 +1,5 @@
 import { DogModel } from 'src/infrastructure/database/models/Dog.model';
-import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepositoryImpl';
+import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
 import { DogUseCases } from './DogUseCases';
 import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
 

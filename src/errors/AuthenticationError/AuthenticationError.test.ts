@@ -1,7 +1,7 @@
 import { AuthenticationError } from './AuthenticationError';
 
 describe('AuthenticationError', () => {
-  describe('AuthenticationError constructor', () => {
+  describe('constructor', () => {
     describe('WHEN invoked', () => {
       it('should create the instance correctly', () => {
         const mockMessage = 'Authentication error message';

@@ -1,7 +1,7 @@
 import { BadRequestError } from './BadRequestError';
 
 describe('BadRequestError', () => {
-  describe('BadRequestError constructor', () => {
+  describe('constructor', () => {
     describe('WHEN invoked', () => {
       it('should create the instance correctly', () => {
         const mockMessage = 'Bad request error message';

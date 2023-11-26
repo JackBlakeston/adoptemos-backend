@@ -1,4 +1,4 @@
-import { BaseRepositoryImpl } from 'src/infrastructure/repositories/baseRepositoryImpl/BaseRepositoryImpl';
+import { BaseRepositoryImpl } from 'src/infrastructure/repositories/BaseRepositoryImpl';
 import { Response } from 'express';
 import { BaseError } from 'src/errors/BaseError';
 import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
