@@ -1,5 +1,5 @@
 import { DogController } from './DogController';
-import { DogModel } from '../../../infrastructure/database/models/Dog.model';
+import { DogModel } from '../../../infrastructure/database/models/DogModel';
 import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import {
   getErrorResponseObject,

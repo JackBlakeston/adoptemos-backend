@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import { BaseRouter, Route } from './BaseRouter';
-import { HttpMethods } from './Routes.types';
+import { HttpMethods } from './Routers.types';
 import { MockController, MockEntity, MockRepositoryImpl } from 'src/fixtures/ClassMocks';
 import { MockModel } from 'src/fixtures/ModelMocks';
 

@@ -8,7 +8,7 @@ export class Database {
     this.dbUrl = dbUrl;
   }
 
-  static configureMongoose = () => {
+  private configureMongoose = () => {
     mongoose.set('toJSON', {
       virtuals: true,
       versionKey: false,
@@ -26,7 +26,7 @@ export class Database {
   };
 
   async connect(connectOptions?: ConnectOptions): Promise<void> {
-    Database.configureMongoose();
+    this.configureMongoose();
     await mongoose.connect(this.dbUrl, connectOptions);
     console.log('Connected to mongodb');
   }

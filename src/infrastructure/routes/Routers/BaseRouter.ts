@@ -2,13 +2,13 @@ import express, { RequestHandler } from 'express';
 import { BaseController } from 'src/application/controllers/BaseController';
 import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
 import { BaseRepositoryImpl } from 'src/infrastructure/repositories/BaseRepositoryImpl';
-import { HttpMethods, Url } from 'src/infrastructure/routes/Routes.types';
+import { HttpMethods, Url } from 'src/infrastructure/routes/Routers/Routers.types';
 
 export type Route = [HttpMethods, Url, ...RequestHandler[]];
 
 export class BaseRouter<K extends BaseEntity, T extends BaseController<K, BaseRepositoryImpl<K>>> {
   protected controller: T;
-  public router: express.Router;
+  router: express.Router;
 
   constructor(controller: T) {
     this.router = express.Router();

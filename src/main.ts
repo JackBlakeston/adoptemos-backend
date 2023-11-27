@@ -1,15 +1,14 @@
 /* eslint-disable no-console */
 import { MONGODB_URL } from './config/database';
 import { Database } from './infrastructure/database/Database';
-import { AdoptemosServer } from './infrastructure/server/Server';
+import { Server } from './infrastructure/server/Server';
 
-const server = new AdoptemosServer();
-server.configureRoutes();
+const PORT = process.env.PORT || 8080;
 
 const db = new Database(MONGODB_URL);
 db.connect();
 
-const PORT = process.env.PORT || 8080;
+const server = new Server();
 server.start(PORT, () => {
   console.log(`The doggie dog server is running on port ${PORT}`);
 });

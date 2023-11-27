@@ -1,6 +1,6 @@
 import { DogRepositoryImpl } from './DogRepositoryImpl';
 import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
-import { DogModel } from 'src/infrastructure/database/models/Dog.model';
+import { DogModel } from 'src/infrastructure/database/models/DogModel';
 import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import { useMongoTestingEnvironment } from '../utils/testing/RepositoriesTestingUtils';
 import { InternalServerError } from 'src/errors/InternalServerError/InternalServerError';

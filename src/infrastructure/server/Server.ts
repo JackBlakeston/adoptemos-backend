@@ -1,16 +1,19 @@
 import express, { Express, RequestHandler } from 'express';
-import { router } from '../routes/Routes';
+import { MainRouter } from '../routes/MainRouter/MainRouter';
 
-export class AdoptemosServer {
+export class Server {
   private readonly app: Express;
+  private router: MainRouter;
 
   constructor() {
     this.app = express();
-    this.app.use(express.json());
+    this.use(express.json());
+    this.router = new MainRouter();
+    this.configureRoutes();
   }
 
-  configureRoutes(): void {
-    this.app.use(router);
+  private configureRoutes(): void {
+    this.app.use(this.router.router);
   }
 
   use(middleware: RequestHandler): void {
