@@ -1,12 +1,11 @@
 import { DogRepositoryImpl } from './DogRepositoryImpl';
-import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
 import { DogModel } from 'src/infrastructure/database/models/DogModel';
 import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import { useMongoTestingEnvironment } from '../utils/testing/RepositoriesTestingUtils';
 import { InternalServerError } from 'src/errors/InternalServerError/InternalServerError';
 
 describe('DogRepositoryImpl', () => {
-  const mockDogData: Dog = { id: '42', name: 'Bob', breed: 'Spaniel' };
+  const mockDog: Dog = new Dog({ name: 'Bob', breed: 'Spaniel' });
   const dogRepository = new DogRepositoryImpl(DogModel);
 
   useMongoTestingEnvironment();
@@ -14,21 +13,19 @@ describe('DogRepositoryImpl', () => {
   describe('createDog method', () => {
     describe('WHEN creating a dog successfully', () => {
       it('should create the dog in the db and return the created dog', async () => {
-        const mockDogDto = new CreateDogDto(mockDogData);
-
-        const createdDog = await dogRepository.createDog(mockDogDto);
+        const createdDog = await dogRepository.createDog(mockDog);
         const savedDbDogs = await DogModel.find().exec();
         const savedDogs = savedDbDogs.map((dog) => dog.toObject());
 
-        expect(createdDog).toEqual(mockDogData);
-        expect(savedDogs).toEqual([mockDogData]);
+        expect(createdDog).toEqual(mockDog);
+        expect(savedDogs).toEqual([mockDog]);
       });
     });
 
     describe('WHEN failing to create a dog', () => {
       it('should throw the correct error', async () => {
         try {
-          await dogRepository.createDog(new CreateDogDto({} as CreateDogDto));
+          await dogRepository.createDog({} as Dog);
         } catch (error) {
           if (error instanceof Error) {
             expect(error instanceof InternalServerError).toBe(true);
@@ -42,12 +39,12 @@ describe('DogRepositoryImpl', () => {
   describe('getAllDogs method', () => {
     describe('WHEN getting all dogs successfully', () => {
       it('should return all dogs in db', async () => {
-        const dogDocument = new DogModel(mockDogData);
+        const dogDocument = new DogModel(mockDog);
         await dogDocument.save();
 
         const savedDogs = await dogRepository.getAllDogs();
 
-        expect(savedDogs).toEqual([mockDogData]);
+        expect(savedDogs).toEqual([mockDog]);
       });
     });
 

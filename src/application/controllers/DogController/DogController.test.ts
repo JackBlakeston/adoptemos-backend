@@ -1,6 +1,5 @@
 import { DogController } from './DogController';
 import { DogModel } from '../../../infrastructure/database/models/DogModel';
-import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import {
   getErrorResponseObject,
   getMockRequest,
@@ -10,9 +9,9 @@ import {
 import { Request, Response } from 'express';
 import { NotFoundError } from 'src/errors/NotFoundError/NotFoundError';
 import { DogUseCases } from 'src/core/domain/useCases/DogUseCases/DogUseCases';
+import { mockCreateDogDto, mockDogWithoutId } from 'src/fixtures/MockEntities/MockDogs';
 
 describe('DogController', () => {
-  const mockDog: Dog = { name: 'Buddy', breed: 'Golden Retriever', id: '1' };
   const mockErrorMessage = 'Test error message';
 
   let dogController: DogController;
@@ -30,22 +29,22 @@ describe('DogController', () => {
 
     describe('WHEN dog creation is successful', () => {
       it('should send a response with a dog object and status 201', async () => {
-        mockReq = getMockRequest(mockDog);
+        mockReq = getMockRequest(mockCreateDogDto);
         createDogUseCaseSpy.mockImplementation(async () => {
-          return mockDog;
+          return mockDogWithoutId;
         });
         const expectedStatusCode = 201;
 
         await dogController.createDog(mockReq, mockRes);
 
         expect(mockRes.status).toHaveBeenCalledWith(expectedStatusCode);
-        expect(mockRes.send).toHaveBeenCalledWith(getSuccessResponseObject(mockDog));
+        expect(mockRes.send).toHaveBeenCalledWith(getSuccessResponseObject(mockCreateDogDto));
       });
     });
 
     describe('WHEN dog creation is not successful', () => {
       it('should send a response with an error object and an error status', async () => {
-        mockReq = getMockRequest(mockDog);
+        mockReq = getMockRequest(mockCreateDogDto);
         createDogUseCaseSpy.mockImplementation(async () => {
           throw new NotFoundError(mockErrorMessage);
         });
@@ -64,7 +63,7 @@ describe('DogController', () => {
 
     describe('WHEN successful in getting all dogs', () => {
       it('should send a response with a dog collection and status 200', async () => {
-        const mockDogCollection = Array(2).fill(mockDog);
+        const mockDogCollection = Array(2).fill(mockCreateDogDto);
         mockReq = getMockRequest();
         getAllDogsUseCaseSpy.mockImplementation(async () => {
           return mockDogCollection;

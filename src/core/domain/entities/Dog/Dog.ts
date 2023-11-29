@@ -1,11 +1,13 @@
-import { BaseEntity } from '../BaseEntity';
+import { BaseEntityWithUrl } from '../BaseEntity';
+import { EntityConstructorData } from '../Entities.types';
 
-export class Dog extends BaseEntity {
-  id!: string;
+export class Dog extends BaseEntityWithUrl {
   name!: string;
   breed?: string;
 
-  constructor(data: Dog) {
+  constructor(data: EntityConstructorData<Dog>) {
     super(data);
   }
 }
+
+export type DogConstructorData = EntityConstructorData<Dog>;

@@ -6,6 +6,7 @@ import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepository
 export class DogUseCases extends BaseUseCase<Dog, DogRepositoryImpl> {
   async createDog(createDogDto: CreateDogDto): Promise<Dog> {
     const dog = new Dog(createDogDto);
+
     await this.repository.createDog(dog);
 
     return dog;

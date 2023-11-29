@@ -6,10 +6,6 @@ export class CreateDogDto extends BaseDto {
   @IsNotEmpty()
   name!: string;
 
-  @IsString()
-  @IsNotEmpty()
-  id!: string;
-
   @IsOptional()
   @IsString()
   @IsNotEmpty()

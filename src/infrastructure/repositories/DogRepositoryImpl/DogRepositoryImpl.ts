@@ -1,11 +1,10 @@
 import { DogRepository } from 'src/core/repositories/DogRepository';
-import { CreateDogDto } from '../../../application/dtos/Dog/CreateDogDto/CreateDogDto';
 import { Dog } from 'src/core/domain/entities/Dog/Dog';
 import { BaseRepositoryImpl } from '../BaseRepositoryImpl';
 import { InternalServerError } from 'src/errors/InternalServerError/InternalServerError';
 
 export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRepository {
-  async createDog(dogDto: CreateDogDto): Promise<Dog> {
+  async createDog(dogDto: Dog): Promise<Dog> {
     try {
       const dogDocument = new this.model(dogDto);
       const createdDog = await dogDocument.save();
@@ -33,7 +32,7 @@ export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRep
     }
   }
 
-  async updateDog(id: string, dogData: CreateDogDto): Promise<Dog | null> {
+  async updateDog(id: string, dogData: Dog): Promise<Dog | null> {
     try {
       const updatedDog = await this.model
         .findByIdAndUpdate(id, dogData, {
