@@ -1,7 +1,7 @@
 import { MockDto } from '@src/fixtures/ClassMocks';
 import { getMockRequest, getMockResponse } from '@src/application/controllers/utils/testing/ControllerTestingUtils';
 import { Request, Response } from 'express';
-import { DtoValidator } from '@src/application/validators/DtoValidator/DtoValidator';
+import { DtoValidator } from '@src/application/validation/DtoValidator/DtoValidator';
 
 describe('DtoValidator', () => {
   let mockReq: Request;

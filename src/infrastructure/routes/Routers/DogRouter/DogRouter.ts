@@ -4,7 +4,7 @@ import { BaseRouter } from '@src/infrastructure/routes/Routers/BaseRouter';
 import { Dog } from '@src/core/domain/entities/Dog/Dog';
 import { HttpMethods } from '@src/infrastructure/routes/Routers/Routers.types';
 import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
-import { DtoValidator } from '@src/application/validators/DtoValidator/DtoValidator';
+import { DtoValidator } from '@src/application/validation/DtoValidator/DtoValidator';
 
 const { Get, Post } = HttpMethods;
 
