@@ -1,4 +1,4 @@
-FROM node:18.14.0 AS build
+FROM node:20.9 AS build
 
 WORKDIR /adoptemos-server
 COPY package*.json ./
@@ -7,7 +7,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18.14.0-slim
+FROM node:20.9-slim
 
 WORKDIR /adoptemos-server
 COPY --from=build /adoptemos-server ./
