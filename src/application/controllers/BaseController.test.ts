@@ -1,13 +1,13 @@
 import { Response } from 'express';
-import { BaseController } from './BaseController';
+import { BaseController } from '@src/application/controllers/BaseController';
 import {
   getErrorResponseObject,
   getMockResponse,
   getSuccessResponseObject,
-} from './utils/testing/ControllerTestingUtils';
-import { NotFoundError } from 'src/errors/NotFoundError/NotFoundError';
-import { MockController, MockRepositoryImpl } from 'src/fixtures/ClassMocks';
-import { MockModel } from 'src/fixtures/ModelMocks';
+} from '@src/application/controllers/utils/testing/ControllerTestingUtils';
+import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
+import { MockController, MockRepositoryImpl } from '@src/fixtures/ClassMocks';
+import { MockModel } from '@src/fixtures/ModelMocks';
 
 describe('BaseController', () => {
   const mockData = { color: 'red' };

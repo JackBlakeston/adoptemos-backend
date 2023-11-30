@@ -1,5 +1,5 @@
-import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
-import { Dog } from 'src/core/domain/entities/Dog/Dog';
+import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
 
 export const mockCreateDogDto: CreateDogDto = { name: 'Bob', breed: 'Mongrel' };
 export const mockDogWithoutId = mockCreateDogDto as Dog;

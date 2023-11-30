@@ -1,5 +1,5 @@
-import { MockRepositoryImpl, MockUseCase } from 'src/fixtures/ClassMocks';
-import { MockModel } from 'src/fixtures/ModelMocks';
+import { MockRepositoryImpl, MockUseCase } from '@src/fixtures/ClassMocks';
+import { MockModel } from '@src/fixtures/ModelMocks';
 
 describe('BaseUseCase', () => {
   describe('extended to create a use case class', () => {

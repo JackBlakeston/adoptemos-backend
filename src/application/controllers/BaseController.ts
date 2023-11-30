@@ -1,7 +1,7 @@
-import { BaseRepositoryImpl } from 'src/infrastructure/repositories/BaseRepositoryImpl';
+import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseRepositoryImpl';
 import { Response } from 'express';
-import { BaseError } from 'src/errors/BaseError';
-import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
+import { BaseError } from '@src/errors/BaseError';
+import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
 
 export class BaseController<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
   protected repository: T;

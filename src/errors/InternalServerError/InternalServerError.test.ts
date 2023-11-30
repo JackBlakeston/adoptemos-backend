@@ -1,4 +1,4 @@
-import { InternalServerError } from './InternalServerError';
+import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
 describe('InternalServerError', () => {
   describe('constructor', () => {

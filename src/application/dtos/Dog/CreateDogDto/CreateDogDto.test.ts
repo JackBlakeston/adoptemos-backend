@@ -1,4 +1,4 @@
-import { CreateDogDto } from './CreateDogDto';
+import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
 import { validate } from 'class-validator';
 
 describe('CreateDogDto', () => {

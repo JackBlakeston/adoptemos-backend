@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { generateUrlSlug } from './UrlSlugGenerator';
+import { generateUrlSlug } from '@src/core/domain/entities/utils/UrlSlugGenerator/UrlSlugGenerator';
 
 describe('UrlSlugGenerator', () => {
   describe('generateUrlSlug', () => {

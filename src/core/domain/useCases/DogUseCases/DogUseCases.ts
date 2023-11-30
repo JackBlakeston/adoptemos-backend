@@ -1,7 +1,7 @@
-import { Dog } from '../../entities/Dog/Dog';
-import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
-import { BaseUseCase } from '../BaseUseCase';
-import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
+import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
+import { BaseUseCase } from '@src/core/domain/useCases/BaseUseCase';
+import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
 
 export class DogUseCases extends BaseUseCase<Dog, DogRepositoryImpl> {
   async createDog(createDogDto: CreateDogDto): Promise<Dog> {

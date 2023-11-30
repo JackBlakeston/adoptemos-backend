@@ -1,8 +1,8 @@
 import express, { Router } from 'express';
-import { BaseRouter, Route } from './BaseRouter';
-import { HttpMethods } from './Routers.types';
-import { MockController, MockEntity, MockRepositoryImpl } from 'src/fixtures/ClassMocks';
-import { MockModel } from 'src/fixtures/ModelMocks';
+import { BaseRouter, Route } from '@src/infrastructure/routes/Routers/BaseRouter';
+import { HttpMethods } from '@src/infrastructure/routes/Routers/Routers.types';
+import { MockController, MockEntity, MockRepositoryImpl } from '@src/fixtures/ClassMocks';
+import { MockModel } from '@src/fixtures/ModelMocks';
 
 const { Get, Post } = HttpMethods;
 

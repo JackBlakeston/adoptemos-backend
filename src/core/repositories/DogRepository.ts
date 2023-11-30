@@ -1,4 +1,4 @@
-import { Dog } from '../domain/entities/Dog/Dog';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
 
 export interface DogRepository {
   findDogById: (id: string) => Promise<Dog | null>;

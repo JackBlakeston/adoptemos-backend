@@ -1,4 +1,4 @@
-import { ErrorData } from './Errors.types';
+import { ErrorData } from '@src/errors/Errors.types';
 
 export class BaseError extends Error {
   statusCode: number;

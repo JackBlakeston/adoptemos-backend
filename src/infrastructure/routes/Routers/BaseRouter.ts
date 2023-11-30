@@ -1,8 +1,8 @@
 import express, { RequestHandler } from 'express';
-import { BaseController } from 'src/application/controllers/BaseController';
-import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
-import { BaseRepositoryImpl } from 'src/infrastructure/repositories/BaseRepositoryImpl';
-import { HttpMethods, Url } from 'src/infrastructure/routes/Routers/Routers.types';
+import { BaseController } from '@src/application/controllers/BaseController';
+import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
+import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseRepositoryImpl';
+import { HttpMethods, Url } from '@src/infrastructure/routes/Routers/Routers.types';
 
 export type Route = [HttpMethods, Url, ...RequestHandler[]];
 

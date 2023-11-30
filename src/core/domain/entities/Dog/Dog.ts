@@ -1,5 +1,5 @@
-import { BaseEntityWithUrl } from '../BaseEntity';
-import { EntityConstructorData } from '../Entities.types';
+import { BaseEntityWithUrl } from '@src/core/domain/entities/BaseEntity';
+import { EntityConstructorData } from '@src/core/domain/entities/Entities.types';
 
 export class Dog extends BaseEntityWithUrl {
   name!: string;

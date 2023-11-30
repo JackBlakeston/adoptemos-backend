@@ -1,15 +1,15 @@
-import { DogController } from './DogController';
-import { DogModel } from '../../../infrastructure/database/models/DogModel';
+import { DogController } from '@src/application/controllers/DogController/DogController';
+import { DogModel } from '@src/infrastructure/database/models/DogModel';
 import {
   getErrorResponseObject,
   getMockRequest,
   getMockResponse,
   getSuccessResponseObject,
-} from '../utils/testing/ControllerTestingUtils';
+} from '@src/application/controllers/utils/testing/ControllerTestingUtils';
 import { Request, Response } from 'express';
-import { NotFoundError } from 'src/errors/NotFoundError/NotFoundError';
-import { DogUseCases } from 'src/core/domain/useCases/DogUseCases/DogUseCases';
-import { mockCreateDogDto, mockDogWithoutId } from 'src/fixtures/MockEntities/MockDogs';
+import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
+import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
+import { mockCreateDogDto, mockDogWithoutId } from '@src/fixtures/MockEntities/MockDogs';
 
 describe('DogController', () => {
   const mockErrorMessage = 'Test error message';

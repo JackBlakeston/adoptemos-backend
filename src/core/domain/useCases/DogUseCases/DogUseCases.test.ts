@@ -1,9 +1,9 @@
-import { DogModel } from 'src/infrastructure/database/models/DogModel';
-import { DogRepositoryImpl } from 'src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
-import { DogUseCases } from './DogUseCases';
-import { mockCreateDogDto, mockDog } from 'src/fixtures/MockEntities/MockDogs';
+import { DogModel } from '@src/infrastructure/database/models/DogModel';
+import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
+import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
+import { mockCreateDogDto, mockDog } from '@src/fixtures/MockEntities/MockDogs';
 
-jest.mock('src/core/domain/entities/Dog/Dog', () => {
+jest.mock('@src/core/domain/entities/Dog/Dog', () => {
   return {
     Dog: jest.fn(() => mockDog),
   };

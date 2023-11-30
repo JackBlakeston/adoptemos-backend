@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { Model } from 'mongoose';
-import { DogRepositoryImpl } from '../../../infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
-import { Dog } from '../../../core/domain/entities/Dog/Dog';
-import { CreateDogDto } from '../../dtos/Dog/CreateDogDto/CreateDogDto';
-import { BaseController } from '../BaseController';
-import { DogUseCases } from 'src/core/domain/useCases/DogUseCases/DogUseCases';
+import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
+import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
+import { BaseController } from '@src/application/controllers/BaseController';
+import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
 
 export class DogController extends BaseController<Dog, DogRepositoryImpl> {
   constructor(dogModel: Model<Dog>) {

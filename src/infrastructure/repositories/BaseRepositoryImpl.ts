@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { BaseEntity } from 'src/core/domain/entities/BaseEntity';
+import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
 
 export class BaseRepositoryImpl<T extends BaseEntity> {
   protected readonly model: Model<T>;

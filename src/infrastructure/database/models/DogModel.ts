@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Dog } from 'src/core/domain/entities/Dog/Dog';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
 
 const dogSchema = new Schema<Dog>({
   id: { type: String, required: true },

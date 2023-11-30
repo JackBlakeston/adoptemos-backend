@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
-import { BaseDto } from '../../BaseDto';
+import { BaseDto } from '@src/application/dtos/BaseDto';
 
 export class CreateDogDto extends BaseDto {
   @IsString()

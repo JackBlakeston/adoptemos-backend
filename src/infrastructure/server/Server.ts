@@ -1,5 +1,5 @@
 import express, { Express, RequestHandler } from 'express';
-import { MainRouter } from '../routes/MainRouter/MainRouter';
+import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 
 export class Server {
   private readonly app: Express;

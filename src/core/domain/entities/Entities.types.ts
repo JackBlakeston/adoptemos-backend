@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
 
 export type EntityConstructorData<T extends BaseEntity> = Omit<T, 'id' | 'url'>;
 

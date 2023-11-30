@@ -1,4 +1,4 @@
-import { Dog } from './Dog';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
 
 describe('Dog Entity', () => {
   const name = 'Bob';

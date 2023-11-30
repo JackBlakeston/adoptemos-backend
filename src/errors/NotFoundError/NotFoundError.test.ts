@@ -1,4 +1,4 @@
-import { NotFoundError } from './NotFoundError';
+import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
 
 describe('NotFoundError', () => {
   describe('NotFoundError constructor', () => {

@@ -1,4 +1,4 @@
-import { MainRouter } from './MainRouter';
+import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 
 describe('MainRouter', () => {
   describe('constructor', () => {

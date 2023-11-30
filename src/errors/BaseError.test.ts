@@ -1,5 +1,5 @@
-import { BaseError } from './BaseError';
-import { ErrorData } from './Errors.types';
+import { BaseError } from '@src/errors/BaseError';
+import { ErrorData } from '@src/errors/Errors.types';
 
 const mockErrorData: ErrorData = {
   message: 'Test error message',

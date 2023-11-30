@@ -1,4 +1,4 @@
-import { BaseError } from '../BaseError';
+import { BaseError } from '@src/errors/BaseError';
 
 export class AuthenticationError extends BaseError {
   constructor(message: string) {

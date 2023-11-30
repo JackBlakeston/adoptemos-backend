@@ -1,10 +1,10 @@
-import { DogController } from 'src/application/controllers/DogController/DogController';
-import { DogModel } from '../../../database/models/DogModel';
-import { BaseRouter } from '../BaseRouter';
-import { Dog } from 'src/core/domain/entities/Dog/Dog';
-import { HttpMethods } from 'src/infrastructure/routes/Routers/Routers.types';
-import { DtoValidator } from 'src/application/validators/DtoValidator/DtoValidator';
-import { CreateDogDto } from 'src/application/dtos/Dog/CreateDogDto/CreateDogDto';
+import { DogController } from '@src/application/controllers/DogController/DogController';
+import { DogModel } from '@src/infrastructure/database/models/DogModel';
+import { BaseRouter } from '@src/infrastructure/routes/Routers/BaseRouter';
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
+import { HttpMethods } from '@src/infrastructure/routes/Routers/Routers.types';
+import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
+import { DtoValidator } from '@src/application/validators/DtoValidator/DtoValidator';
 
 const { Get, Post } = HttpMethods;
 
