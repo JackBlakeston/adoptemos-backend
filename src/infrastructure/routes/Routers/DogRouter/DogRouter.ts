@@ -1,5 +1,5 @@
 import { DogController } from '@src/application/controllers/DogController/DogController';
-import { DogModel } from '@src/infrastructure/database/models/DogModel';
+import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import { BaseRouter } from '@src/infrastructure/routes/Routers/BaseRouter';
 import { Dog } from '@src/core/domain/entities/Dog/Dog';
 import { HttpMethods } from '@src/infrastructure/routes/Routers/Routers.types';

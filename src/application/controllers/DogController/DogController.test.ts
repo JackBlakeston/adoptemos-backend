@@ -1,5 +1,5 @@
 import { DogController } from '@src/application/controllers/DogController/DogController';
-import { DogModel } from '@src/infrastructure/database/models/DogModel';
+import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import {
   getErrorResponseObject,
   getMockRequest,
