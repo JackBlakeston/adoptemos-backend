@@ -7,17 +7,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Login to Heroku Container Registry
-        run: heroku container:login
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-
-      - name: Build and push Docker image
+      - name: Deploy to Render
         run: |
-          docker build -t registry.heroku.com/${{ secrets.APP_NAME }}/web -f dockerfiles/Dockerfile.deploy .
-          docker push registry.heroku.com/${{ secrets.APP_NAME }}/web
-
-      - name: Deploy to Heroku
-        run: |
-          HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }}  heroku container:release web -a ${{ secrets.APP_NAME }}
+          curl -X POST "https://api.render.com/v1/deploys" \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_TOKEN }}" \
+          -d '{"serviceName": "${{ secrets.APP_NAME }}"}'
