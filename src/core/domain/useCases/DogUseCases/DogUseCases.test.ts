@@ -1,4 +1,4 @@
-import { DogModel } from '@src/infrastructure/database/models/DogModel';
+import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
 import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
 import { mockCreateDogDto, mockDog } from '@src/fixtures/MockEntities/MockDogs';

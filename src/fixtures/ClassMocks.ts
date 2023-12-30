@@ -8,6 +8,7 @@ import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseReposit
 
 export class MockEntity extends BaseEntity {
   requiredField!: string;
+  optionalField?: string;
 
   constructor(data: EntityConstructorData<MockEntity>) {
     super(data);
