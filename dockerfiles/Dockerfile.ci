@@ -1,6 +1,6 @@
 FROM node:20.9 AS build
 
-WORKDIR /adoptemos-server
+WORKDIR /app
 COPY package*.json ./
 RUN npm install --ci
 COPY . .
@@ -9,10 +9,10 @@ RUN npm run build
 
 FROM node:20.9-bullseye-slim
 
-WORKDIR /adoptemos-server
-COPY --from=build /adoptemos-server ./
+WORKDIR /app
+COPY --from=build /app ./
 
 RUN apt-get update && apt-get install -y libssl1.1
 RUN apt-get install -y libcurl4
 
-EXPOSE 8080
+EXPOSE $PORT

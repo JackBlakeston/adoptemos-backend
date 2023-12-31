@@ -1,4 +1,4 @@
-# adoptemos-backend
+# adoptemos-server
 This is the backend repository for the Adoptemos project, a platform dedicated to helping people adopt dogs.
 For now, it only works in Malaga, Spain. Scaling is difficult since we have to scrape websites.
 The backend is built using Node.js and MongoDB, and it's hosted on Heroku.
@@ -13,7 +13,7 @@ The backend is built using Node.js and MongoDB, and it's hosted on Heroku.
 
 ## Project Overview
 
-The Adoptemos Backend is responsible for handling dog adoption-related data and operations.
+The Adoptemos Server is responsible for handling dog adoption-related data and operations.
 It scrapes dog shelter websites and aggregates all the dogs for adoption in the area.
 It provides RESTful API endpoints for retrieving and managing dog adoption information.
 

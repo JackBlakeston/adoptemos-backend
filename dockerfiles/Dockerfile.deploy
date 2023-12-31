@@ -1,6 +1,6 @@
 FROM node:20.9 AS build
 
-WORKDIR /adoptemos-server
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -9,9 +9,9 @@ RUN npm run build
 
 FROM node:20.9-bullseye-slim
 
-WORKDIR /adoptemos-server
-COPY --from=build /adoptemos-server ./
+WORKDIR /app
+COPY --from=build /app ./
 
-EXPOSE 8080
+EXPOSE $PORT
 
 CMD npm start

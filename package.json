@@ -1,5 +1,5 @@
 {
-  "name": "adoptemos-backend",
+  "name": "adoptemos-server",
   "version": "1.0.0",
   "engines": {
     "node": "20.9"
@@ -14,7 +14,7 @@
     "typescript": "echo \"Running typescript check 🔎\" && echo \"...\" && tsc && echo \"Typescript check passed ✅\n\"",
     "esbuild": "echo \"Building 🏗️\" && echo \"...\" && node ./scripts/build.js && echo \"Build successful ✅\n\"",
     "test": "jest",
-    "test-docker": "docker exec adoptemos-server npm run test ",
+    "test-docker": "source .env && docker exec $APP_NAME npm run test ",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -22,8 +22,8 @@
     "time:docker-start-quiet": "npm run time start && npm run docker-start-quiet -s && npm run time",
     "docker-start": "npm run typescript && npm run docker-build && npm run docker-up && npm run docker-image-prune-quiet",
     "docker-start-quiet": "node ./scripts/dockerStartQuiet.js",
-    "docker-build": "docker build -t adoptemos-server -f dockerfiles/Dockerfile.dev .",
-    "docker-build-quiet": "echo \"Building docker image 🏗\" && echo \"...\" && docker build -q > /dev/null -t adoptemos-server -f dockerfiles/Dockerfile.dev . && echo \"Docker image build successful ✅\n\"",
+    "docker-build": "source .env && docker build -t $APP_NAME -f dockerfiles/Dockerfile.dev .",
+    "docker-build-quiet": "source .env && echo \"Building docker image 🏗\" && echo \"...\" && docker build -q > /dev/null -t $APP_NAME -f dockerfiles/Dockerfile.dev . && echo \"Docker image build successful ✅\n\"",
     "docker-up": "docker-compose up -d",
     "docker-up-quiet": "echo \"Starting docker containers 📦\" && echo \"...\" && docker-compose up -d > /dev/null 2>&1 && echo \"Docker containers started successfully ✅\n\"",
     "docker-down": "docker-compose down",
@@ -31,15 +31,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JackBlakeston/adoptemos-backend.git"
+    "url": "git+https://github.com/JackBlakeston/adoptemos-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JackBlakeston/adoptemos-backend/issues"
+    "url": "https://github.com/JackBlakeston/adoptemos-server/issues"
   },
-  "homepage": "https://github.com/JackBlakeston/adoptemos-backend#readme",
+  "homepage": "https://github.com/JackBlakeston/adoptemos-server#readme",
   "dependencies": {
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",
