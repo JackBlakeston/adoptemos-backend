@@ -1,9 +1,12 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { BaseController } from '@src/application/controllers/BaseController';
-import { BaseDto } from '@src/application/dtos/BaseDto';
+
 import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
 import { EntityConstructorData } from '@src/core/domain/entities/Entities.types';
 import { BaseUseCase } from '@src/core/domain/useCases/BaseUseCase';
+
+import { BaseController } from '@src/application/controllers/BaseController';
+import { BaseDto } from '@src/application/dtos/BaseDto';
+
 import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseRepositoryImpl';
 
 export class MockEntity extends BaseEntity {

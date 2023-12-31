@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { ENTITY_ROUTERS } from '@src/infrastructure/routes/Routes';
 
 export class MainRouter {

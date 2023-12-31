@@ -1,6 +1,7 @@
-import { UUID, randomUUID } from 'crypto';
-import { UrlSlug, generateUrlSlug } from '@src/core/domain/entities/utils/UrlSlugGenerator/UrlSlugGenerator';
+import { randomUUID,UUID } from 'crypto';
+
 import { BaseEntityWithUrlConstructorData, EntityConstructorData } from '@src/core/domain/entities/Entities.types';
+import { generateUrlSlug,UrlSlug } from '@src/core/domain/entities/utils/UrlSlugGenerator/UrlSlugGenerator';
 
 export class BaseEntity {
   constructor(data: EntityConstructorData<BaseEntity>) {

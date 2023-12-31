@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
-import { MONGODB_URL } from '@src/config/database';
 import { Database } from '@src/infrastructure/database/Database';
 import { Server } from '@src/infrastructure/server/Server';
+
+import { MONGODB_URL } from '@src/config/database';
 
 const PORT = process.env.PORT || 8080;
 

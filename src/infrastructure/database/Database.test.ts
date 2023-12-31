@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 import { Database } from '@src/infrastructure/database/Database';
 
 jest.mock('mongoose', () => ({

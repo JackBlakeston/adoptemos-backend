@@ -1,4 +1,5 @@
 import express, { Express, RequestHandler } from 'express';
+
 import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 
 export class Server {

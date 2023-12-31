@@ -1,8 +1,10 @@
 import { Dog } from '@src/core/domain/entities/Dog/Dog';
-import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
+
 import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
 import { useMongoTestingEnvironment } from '@src/infrastructure/repositories/utils/testing/RepositoriesTestingUtils';
+
+import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
 describe('DogRepositoryImpl', () => {
   const mockDog: Dog = new Dog({ name: 'Bob', breed: 'Spaniel' });

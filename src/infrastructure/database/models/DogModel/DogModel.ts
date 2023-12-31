@@ -1,6 +1,8 @@
-import { Dog } from '@src/core/domain/entities/Dog/Dog';
-import { BaseModel } from '@src/infrastructure/database/models/BaseModel';
 import { SchemaDefinition } from 'mongoose';
+
+import { Dog } from '@src/core/domain/entities/Dog/Dog';
+
+import { BaseModel } from '@src/infrastructure/database/models/BaseModel';
 
 const schemaDefinition: SchemaDefinition = {
   name: { type: String, required: true },

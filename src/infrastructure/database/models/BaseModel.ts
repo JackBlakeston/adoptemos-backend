@@ -1,5 +1,6 @@
+import { Model, model,Schema, SchemaDefinition } from 'mongoose';
+
 import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
-import { Model, Schema, SchemaDefinition, model } from 'mongoose';
 
 export interface BaseModelProps {
   name: string;
