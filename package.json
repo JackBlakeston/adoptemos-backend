@@ -1,5 +1,5 @@
 {
-  "name": "adoptemos-backend",
+  "name": "adoptemos-server",
   "version": "1.0.0",
   "engines": {
     "node": "20.9"
@@ -31,15 +31,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JackBlakeston/adoptemos-backend.git"
+    "url": "git+https://github.com/JackBlakeston/adoptemos-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JackBlakeston/adoptemos-backend/issues"
+    "url": "https://github.com/JackBlakeston/adoptemos-server/issues"
   },
-  "homepage": "https://github.com/JackBlakeston/adoptemos-backend#readme",
+  "homepage": "https://github.com/JackBlakeston/adoptemos-server#readme",
   "dependencies": {
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",
