@@ -16,5 +16,5 @@ runs:
       with:
         image-name: ${{ inputs.image-name }}
     - name: Start containers
-      run: npm run docker-up
+      run: npm run docker-up-ci
       shell: bash
