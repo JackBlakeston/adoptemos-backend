@@ -11,5 +11,5 @@ jobs:
         with:
           image-name: ${{ secrets.APP_NAME }}
       - name: Run tests
-        run: |
-          docker exec ${{ secrets.APP_NAME }} npm test
+        shell: bash
+        run: docker exec ${{ secrets.APP_NAME }} npm test
