@@ -1,8 +1,10 @@
-import { ValidationError, validate } from 'class-validator';
-import { BadRequestError } from '@src/errors/BadRequestError/BadRequestError';
-import { BaseDto } from '@src/application/dtos/BaseDto';
+import { validate,ValidationError } from 'class-validator';
 import { NextFunction, Request, Response } from 'express';
+
 import { BaseController } from '@src/application/controllers/BaseController';
+import { BaseDto } from '@src/application/dtos/BaseDto';
+
+import { BadRequestError } from '@src/errors/BadRequestError/BadRequestError';
 
 export class DtoValidator<T extends typeof BaseDto> {
   private dtoClass: typeof BaseDto;

@@ -1,5 +1,6 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
+
 import { Database } from '@src/infrastructure/database/Database';
 
 export const useMongoTestingEnvironment = () => {

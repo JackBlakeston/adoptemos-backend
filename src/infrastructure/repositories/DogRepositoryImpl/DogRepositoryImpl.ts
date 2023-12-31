@@ -1,6 +1,8 @@
-import { DogRepository } from '@src/core/repositories/DogRepository';
 import { Dog } from '@src/core/domain/entities/Dog/Dog';
+import { DogRepository } from '@src/core/repositories/DogRepository';
+
 import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseRepositoryImpl';
+
 import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
 export class DogRepositoryImpl extends BaseRepositoryImpl<Dog> implements DogRepository {

@@ -1,6 +1,7 @@
-import { MockEntity } from '@src/fixtures/ClassMocks';
 import { BaseEntityWithId, BaseEntityWithUrl } from '@src/core/domain/entities/BaseEntity';
 import { EntityConstructorData } from '@src/core/domain/entities/Entities.types';
+
+import { MockEntity } from '@src/fixtures/ClassMocks';
 
 describe('BaseEntity', () => {
   const mockData = { requiredField: 'foo', optionalField: 'bar' };

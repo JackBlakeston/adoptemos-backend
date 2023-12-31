@@ -6,7 +6,7 @@
     "project": "./tsconfig.json"
   },
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
-  "plugins": ["@typescript-eslint", "prettier", "@limegrass/import-alias"],
+  "plugins": ["@typescript-eslint", "prettier", "@limegrass/import-alias", "simple-import-sort"],
   "ignorePatterns": ["scripts/*.js"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "warn",
@@ -23,41 +23,30 @@
     "max-params": ["warn", 4],
     "max-depth": ["error", 5],
     "@limegrass/import-alias/import-alias": "warn",
-    // "simple-import-sort/imports": [
-    //   "warn",
-    //   {
-    //     "groups": [
-    //       // Preact and external libraries
-    //       ["^preact", "^@?\\w"],
-    //       // Components
-    //       [
-    //         "^@atoms(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
-    //         "^@molecules(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
-    //         "^@organisms(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
-    //         "^@templates(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
-    //         "^@pages(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/|/lib/).)*$",
-    //         "^@pages/.*/lib/(?:(?!.styles|.scss|.const|/types/|components|/use|/utils/|/context/).)*$",
-    //         "^(?:(?!/use|/utils/|/context/).)*/components/(?:(?!.styles|.scss|.const|/types/|/use|/utils/|/context/).)*$"
-    //       ],
-    //       // Hooks, utils and context
-    //       [
-    //         "^@hooks(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
-    //         "^(?:(?!/utils/|/context/).)*/use(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
-    //         "@utils(?:(?!.styles|.scss|.const|/types/|/utils/|/context/).)*$",
-    //         "^(?:(?!/context/).)*/utils/(?:(?!.styles|.scss|.const|/types/|/context/).)*$",
-    //         "@context(?:(?!.styles|.scss|.const|/types/|/context/).)*$",
-    //         "(/context/)(?:(?!.styles|.scss|.const|/types/).)*$"
-    //       ],
-    //       // Constants, types and other non-matched imports
-    //       ["@const", ".const", "@types", "/types/", "^\\u0000"],
-    //       // NGE web components
-    //       ["@no-gravity-elements", "/lib/"],
-    //       // Styles
-    //       [".styles", ".scss"]
-    //     ]
-    //   }
-    // ],
-    // "import/order": "off",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          // External libraries
+          ["^@?\\w"],
+          // Internal paths
+          ["^@src/core/domain", "^@src/core/repositories"],
+          ["^@src/application/controllers", "^@src/application/dtos", "^@src/application/validation"],
+          [
+            "^@src/infrastructure/database",
+            "^@src/infrastructure/repositories",
+            "^@src/infrastructure/routes",
+            "^@src/infrastructure/server"
+          ],
+          ["^@src/errors/"],
+          ["^@src/config/"],
+          ["^@src/fixtures/"],
+          // Uncaught paths
+          ["^\\u0000"]
+        ]
+      }
+    ],
+    "import/order": "off",
     "padding-line-between-statements": [
       "warn",
       { "blankLine": "always", "prev": "import", "next": "*" },

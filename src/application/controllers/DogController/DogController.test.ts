@@ -1,14 +1,19 @@
+import { Request, Response } from 'express';
+
+import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
+
 import { DogController } from '@src/application/controllers/DogController/DogController';
-import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import {
   getErrorResponseObject,
   getMockRequest,
   getMockResponse,
   getSuccessResponseObject,
 } from '@src/application/controllers/utils/testing/ControllerTestingUtils';
-import { Request, Response } from 'express';
+
+import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
+
 import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
-import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
+
 import { mockCreateDogDto, mockDogWithoutId } from '@src/fixtures/MockEntities/MockDogs';
 
 describe('DogController', () => {

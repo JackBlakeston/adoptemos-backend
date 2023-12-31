@@ -1,4 +1,5 @@
-import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional,IsString } from 'class-validator';
+
 import { BaseDto } from '@src/application/dtos/BaseDto';
 
 export class CreateDogDto extends BaseDto {
