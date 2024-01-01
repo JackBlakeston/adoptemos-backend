@@ -11,6 +11,6 @@ esbuild
     sourcemap: true,
     target: 'node18',
     tsconfig: './tsconfig.json',
-    external: ['express', 'mongoose'],
+    external: ['express', 'mongoose', 'swagger-ui-express'],
   })
   .catch(() => process.exit(1));
