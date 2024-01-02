@@ -3,7 +3,7 @@ import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
 import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
 
-import { mockCreateDogDto, mockDog } from '@src/fixtures/MockEntities/MockDogs';
+import { mockCreateDogDto, mockDog } from '@src/fixtures/MockEntities/MockDog';
 
 jest.mock('@src/core/domain/entities/Dog/Dog', () => {
   return {

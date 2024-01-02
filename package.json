@@ -27,7 +27,8 @@
     "docker-up-ci": "docker-compose up --no-deps -d app",
     "docker-up-quiet": "echo \"Starting docker containers 📦\" && echo \"...\" && docker-compose up -d > /dev/null 2>&1 && echo \"Docker containers started successfully ✅\n\"",
     "docker-down": "docker-compose down",
-    "docker-image-prune-quiet": "docker image prune -f > /dev/null"
+    "docker-image-prune-quiet": "docker image prune -f > /dev/null",
+    "auto-docs": "source .env && node scripts/buildSwaggerFiles.js && node scripts/swaggerAutogen.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,8 @@
+{
+  "explorer": true,
+  "swaggerOptions": {
+    "docExpansion": "full",
+    "defaultModelsExpandDepth": 10,
+    "defaultModelExpandDepth": 10
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Adoptemos API",
+    "description": "API docs for the Adoptemos project",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/",
+      "description": "Dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Dog"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Dog": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "bob"
+          },
+          "breed": {
+            "type": "string",
+            "example": "mongrel"
+          },
+          "id": {
+            "type": "string",
+            "example": "bf60d2e5-24d7-40f7-ab8e-21493cc6f8bf"
+          },
+          "url": {
+            "type": "string",
+            "example": "Bob_lqwsqq16_bf60d"
+          }
+        },
+        "required": [
+          "name",
+          "id",
+          "url"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/dogs": {
+      "get": {
+        "summary": "Get all dogs",
+        "tags": [
+          "Dog"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Dog"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create dog",
+        "tags": [
+          "Dog"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "bob"
+                  },
+                  "breed": {
+                    "type": "string",
+                    "example": "mongrel"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Dog"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

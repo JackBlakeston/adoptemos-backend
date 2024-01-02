@@ -51,8 +51,8 @@ The backend server should now be running locally. You can access it at `http://l
 
 ## Continuous Integration and Deployment
 
-This project uses GitHub Actions for Continuous Integration and Deployment (CI/CD). The CI/CD pipeline is set up to automatically run tests and deploy to Heroku when a pull request is merged to the `main` branch.
-The `main` branch is protected so you can't push directly to it. You should always use feature branches for development.
+This project uses GitHub Actions for Continuous Integration and Deployment (CI/CD). The CI/CD pipeline is set up to automatically deploy to Render when a pull request is merged to the `main` branch.
+The `main` branch is protected so you can't push directly to it.
 
 ### Workflow Overview
 
@@ -63,7 +63,15 @@ The CI/CD pipeline consists of the following jobs:
 - **Test:** Runs tests.
 
 Merging a pull request to master additionally runs this job:
-- **Deploy:** Deploys the application to Heroku.
+- **Deploy:** Deploys the application to Render.
+
+## Docs
+
+Docs are generated using swagger. Use the command
+```
+npm run auto-docs
+```
+ to autogenerate swagger docs. The framework patterns must be followed for this to work.
 
 ## License
 

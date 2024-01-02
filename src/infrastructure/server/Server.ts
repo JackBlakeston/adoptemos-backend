@@ -3,7 +3,8 @@ import swaggerUi from 'swagger-ui-express';
 
 import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 
-import swaggerDocument from '@src/docs/swagger.json';
+import swaggerDocument from '@src/docs/swaggerAutogen.json';
+import swaggerUiOptions from '@src/docs/swaggerUiConfig.json';
 
 export class Server {
   private app: Express;
@@ -19,7 +20,7 @@ export class Server {
   }
 
   private configureSwagger = () => {
-    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
+    this.app.use('/openapi', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
   };
 
   private configureRoutes = (): void => {
