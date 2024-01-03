@@ -41,6 +41,7 @@
           ["^@src/errors/"],
           ["^@src/config/"],
           ["^@src/fixtures/"],
+          ["^@src/docs/"],
           // Uncaught paths
           ["^\\u0000"]
         ]

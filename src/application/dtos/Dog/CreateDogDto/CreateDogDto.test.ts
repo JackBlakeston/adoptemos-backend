@@ -3,7 +3,7 @@ import { validate } from 'class-validator';
 import { CreateDogDto } from '@src/application/dtos/Dog/CreateDogDto/CreateDogDto';
 
 describe('CreateDogDto', () => {
-  const mockCreateDogReqBody: CreateDogDto = { name: 'Bob', breed: 'Spaniel' };
+  const mockCreateDogReqBody: CreateDogDto = { name: 'bob', breed: 'spaniel' };
 
   describe('validation', () => {
     describe('WHEN the dto is valid', () => {

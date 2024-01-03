@@ -6,8 +6,9 @@ import { useMongoTestingEnvironment } from '@src/infrastructure/repositories/uti
 
 import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
+import { mockDog } from '@src/fixtures/MockEntities/MockDog';
+
 describe('DogRepositoryImpl', () => {
-  const mockDog: Dog = new Dog({ name: 'Bob', breed: 'Spaniel' });
   const dogRepository = new DogRepositoryImpl(DogModel);
 
   useMongoTestingEnvironment();

@@ -14,7 +14,7 @@ import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel'
 
 import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
 
-import { mockCreateDogDto, mockDogWithoutId } from '@src/fixtures/MockEntities/MockDogs';
+import { mockCreateDogDto, mockDogWithoutId } from '@src/fixtures/MockEntities/MockDog';
 
 describe('DogController', () => {
   const mockErrorMessage = 'Test error message';

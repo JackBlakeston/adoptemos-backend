@@ -3,14 +3,13 @@ const path = require('path');
 
 esbuild
   .build({
-    entryPoints: ['./src/main.ts'],
+    entryPoints: ['./src/fixtures/**/*.ts', './src/docs/initialSwaggerDocs.ts'],
     bundle: true,
-    outfile: './lib/main.js',
+    outdir: './lib/src',
     platform: 'node',
     format: 'cjs',
     sourcemap: true,
     target: 'node18',
     tsconfig: './tsconfig.json',
-    external: ['express', 'mongoose', 'swagger-ui-express'],
   })
   .catch(() => process.exit(1));
