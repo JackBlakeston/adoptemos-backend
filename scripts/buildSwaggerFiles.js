@@ -3,9 +3,9 @@ const path = require('path');
 
 esbuild
   .build({
-    entryPoints: ['./src/fixtures/**/*.ts', './src/docs/initialSwaggerDocs.ts'],
+    entryPoints: ['./src/fixtures/**/*.ts'],
     bundle: true,
-    outdir: './lib/src',
+    outdir: './lib/src/fixtures',
     platform: 'node',
     format: 'cjs',
     sourcemap: true,
