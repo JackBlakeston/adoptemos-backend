@@ -8,39 +8,27 @@
   "main": "lib/main.js",
   "scripts": {
     "start": "node lib/main.js",
-    "watch": "node ./scripts/watch.js",
-    "watch-verbose": "nodemon --watch ./ --ext ts,json,js --exec npm run docker-start -s",
     "build": "npm run esbuild -s",
+    "build-start": "npm run build && npm start",
+    "watch": "nodemon --watch ./ --ext ts,json --exec npm run build-start",
     "typescript": "echo \"Running typescript check 🔎\" && echo \"...\" && tsc && echo \"Typescript check passed ✅\n\"",
-    "esbuild": "echo \"Building 🏗️\" && echo \"...\" && node ./scripts/build.js && echo \"Build successful ✅\n\"",
+    "esbuild": "echo \"Building 🏗️\" && echo \"...\" && node ./scripts/build.js && echo \"Files built successfully ✅\n\"",
     "test": "jest",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "time": "node ./scripts/time.js",
-    "time:docker-start-quiet": "npm run time start && npm run docker-start-quiet -s && npm run time",
-    "docker-start": "npm run typescript && npm run docker-build && npm run docker-up && npm run docker-image-prune-quiet",
-    "docker-start-quiet": "node ./scripts/dockerStartQuiet.js",
+    "docker-start": "npm run docker-build && npm run docker-up && npm run docker-image-prune-quiet",
     "docker-build": "source .env && docker build -t $APP_NAME -f dockerfiles/Dockerfile.dev .",
-    "docker-build-quiet": "source .env && echo \"Building docker image 🏗\" && echo \"...\" && docker build -q > /dev/null -t $APP_NAME -f dockerfiles/Dockerfile.dev . && echo \"Docker image build successful ✅\n\"",
     "docker-up": "docker-compose up -d",
     "docker-up-ci": "docker-compose up --no-deps -d app",
-    "docker-up-quiet": "echo \"Starting docker containers 📦\" && echo \"...\" && docker-compose up -d > /dev/null 2>&1 && echo \"Docker containers started successfully ✅\n\"",
     "docker-down": "docker-compose down",
-    "docker-image-prune-quiet": "docker image prune -f > /dev/null",
     "auto-docs": "source .env && node scripts/buildSwaggerFiles.js && node scripts/swaggerAutogen.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JackBlakeston/adoptemos-server.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JackBlakeston/adoptemos-server/issues"
-  },
-  "homepage": "https://github.com/JackBlakeston/adoptemos-server#readme",
   "dependencies": {
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",

@@ -25,6 +25,8 @@ services:
       - $PORT:$PORT
     stdin_open: true
     tty: true
+    volumes:
+      - ./src:/app/src
 
 volumes:
   db:
