@@ -3,7 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 
 import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 
-import swaggerDocument from '@src/docs/swaggerAutogen.json';
+import { getSwaggerDocument } from '@src/docs/getSwaggerDocument';
 import swaggerUiOptions from '@src/docs/swaggerUiConfig.json';
 
 export class Server {
@@ -20,6 +20,7 @@ export class Server {
   }
 
   private configureSwagger = () => {
+    const swaggerDocument = getSwaggerDocument();
     this.app.use('/openapi', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
   };
 
