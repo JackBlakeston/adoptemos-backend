@@ -1,16 +1,23 @@
-const esbuild = require('esbuild');
-const path = require('path');
+import esbuild from 'esbuild';
+import { runStyledScript } from './scripUtils/styledScript.js';
 
-esbuild
-  .build({
+const buildFiles = async () => {
+  await esbuild.build({
     entryPoints: ['./src/main.ts'],
     bundle: true,
     outfile: './lib/main.js',
     platform: 'node',
-    format: 'cjs',
+    format: 'esm',
     sourcemap: true,
     target: 'node18',
     tsconfig: './tsconfig.json',
     external: ['express', 'mongoose', 'swagger-ui-express'],
-  })
-  .catch(() => process.exit(1));
+  });
+};
+
+runStyledScript({
+  startMsg: 'Building...',
+  successMsg: 'Build success',
+  failMessage: 'Error during build process',
+  script: buildFiles,
+});

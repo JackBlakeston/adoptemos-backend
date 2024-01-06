@@ -4,30 +4,28 @@
   "engines": {
     "node": "20.9"
   },
-  "description": "Backend for Adoptemos website",
+  "type": "module",
   "main": "lib/main.js",
   "scripts": {
     "start": "node lib/main.js",
-    "build": "npm run esbuild -s",
+    "build": "node ./scripts/build.js",
     "build-start": "npm run build && npm start",
     "watch": "nodemon --watch ./ --ext ts,json --exec npm run build-start",
-    "typescript": "echo \"Running typescript check 🔎\" && echo \"...\" && tsc && echo \"Typescript check passed ✅\n\"",
-    "esbuild": "echo \"Building 🏗️\" && echo \"...\" && node ./scripts/build.js && echo \"Files built successfully ✅\n\"",
     "test": "jest",
-    "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix",
-    "docker-start": "npm run docker-build && npm run docker-up && npm run docker-image-prune-quiet",
-    "docker-build": "source .env && docker build -t $APP_NAME -f dockerfiles/Dockerfile.dev .",
-    "docker-up": "docker-compose up -d",
-    "docker-up-ci": "docker-compose up --no-deps -d app",
-    "docker-down": "docker-compose down",
-    "auto-docs": "source .env && node scripts/buildSwaggerFiles.js && node scripts/swaggerAutogen.js"
+    "typescript": "node ./scripts/checkTypes.js",
+    "lint": "node scripts/lintFiles.js",
+    "lint-fix": "npm run lint -s -- --fix",
+    "auto-docs": "source .env && node scripts/buildSwaggerFiles.js && node scripts/swaggerAutogen.js",
+    "docker-start": "npm run docker-build -s && npm run docker-up -s && docker image prune -f > /dev/null",
+    "docker-build": "node scripts/docker.js build",
+    "docker-up": "node scripts/docker.js up",
+    "docker-down": "node scripts/docker.js down",
+    "docker-up-ci": "docker-compose up --no-deps -d app"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JackBlakeston/adoptemos-server.git"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "class-validator": "^0.14.0",
@@ -37,6 +35,7 @@
     "mongodb": "^6.2.0",
     "mongodb-connection-string-url": "^2.6.0",
     "mongoose": "^8.0.1",
+    "restore-cursor": "^5.0.0",
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
