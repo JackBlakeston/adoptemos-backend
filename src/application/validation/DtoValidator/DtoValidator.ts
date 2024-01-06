@@ -1,4 +1,4 @@
-import { validate,ValidationError } from 'class-validator';
+import { validate, ValidationError } from 'class-validator';
 import { NextFunction, Request, Response } from 'express';
 
 import { BaseController } from '@src/application/controllers/BaseController';
@@ -7,10 +7,10 @@ import { BaseDto } from '@src/application/dtos/BaseDto';
 import { BadRequestError } from '@src/errors/BadRequestError/BadRequestError';
 
 export class DtoValidator<T extends typeof BaseDto> {
-  private dtoClass: typeof BaseDto;
+  private DtoClass: typeof BaseDto;
 
-  constructor(dtoClass: T) {
-    this.dtoClass = dtoClass;
+  constructor(DtoClass: T) {
+    this.DtoClass = DtoClass;
   }
 
   private getValidationErrorMessages = (errors: ValidationError[]): string[] => {
@@ -24,8 +24,8 @@ export class DtoValidator<T extends typeof BaseDto> {
   };
 
   validateDto = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    req.body = new this.dtoClass(req.body);
-    const errors = await validate(req.body);
+    req.body = new this.DtoClass(req.body);
+    const errors = await validate(req.body, { whitelist: true, forbidNonWhitelisted: true });
 
     if (errors.length) {
       const validationErrorMessages = this.getValidationErrorMessages(errors);
