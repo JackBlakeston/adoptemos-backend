@@ -1,5 +1,4 @@
-import { BaseEntityWithId, BaseEntityWithUrl } from '@src/core/domain/entities/BaseEntity';
-import { EntityConstructorData } from '@src/core/domain/entities/Entities.types';
+import { BaseEntityWithId, BaseEntityWithUrl, EntityConstructorData } from '@src/core/domain/entities/BaseEntity';
 
 import { MockEntity } from '@src/fixtures/ClassMocks';
 
