@@ -36,8 +36,10 @@
             "^@src/infrastructure/database",
             "^@src/infrastructure/repositories",
             "^@src/infrastructure/routes",
-            "^@src/infrastructure/server"
+            "^@src/infrastructure/server",
+            "^@src/infrastructure/services"
           ],
+          ["^@src/utils/"],
           ["^@src/errors/"],
           ["^@src/config/"],
           ["^@src/fixtures/"],
