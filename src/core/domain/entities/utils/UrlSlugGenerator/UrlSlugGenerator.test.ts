@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-
 import { generateUrlSlug } from '@src/core/domain/entities/utils/UrlSlugGenerator/UrlSlugGenerator';
 
 describe('UrlSlugGenerator', () => {
@@ -8,7 +6,7 @@ describe('UrlSlugGenerator', () => {
       it('should generate the slug for a url', () => {
         const mockPrefix = 'yi';
 
-        const result = generateUrlSlug(randomUUID(), mockPrefix);
+        const result = generateUrlSlug(mockPrefix);
         const resultParts = result.split('_');
 
         expect(resultParts).toHaveLength(3);
@@ -20,7 +18,7 @@ describe('UrlSlugGenerator', () => {
 
     describe('WHEN called without a prefix', () => {
       it('should generate slugs without a prefix', () => {
-        const result = generateUrlSlug(randomUUID());
+        const result = generateUrlSlug();
         const resultParts = result.split('_');
 
         expect(resultParts).toHaveLength(2);

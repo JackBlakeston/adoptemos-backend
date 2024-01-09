@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional,IsString } from 'class-validator';
+import { IsBase64, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 import { BaseDto } from '@src/application/dtos/BaseDto';
 
@@ -11,6 +11,11 @@ export class CreateDogDto extends BaseDto {
   @IsString()
   @IsNotEmpty()
   breed?: string;
+
+  @IsOptional()
+  @IsNotEmpty()
+  @IsBase64()
+  imageData?: string;
 
   constructor(data: CreateDogDto) {
     super(data);

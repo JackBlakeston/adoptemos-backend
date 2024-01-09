@@ -1,7 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-import { BaseEntity } from '@src/core/domain/entities/BaseEntity';
-import { EntityConstructorData } from '@src/core/domain/entities/Entities.types';
+import { BaseEntity, EntityConstructorData } from '@src/core/domain/entities/BaseEntity';
 import { BaseUseCase } from '@src/core/domain/useCases/BaseUseCase';
 
 import { BaseController } from '@src/application/controllers/BaseController';
