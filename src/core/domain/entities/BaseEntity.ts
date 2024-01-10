@@ -4,13 +4,13 @@ import { randomUUID, UUID } from 'crypto';
 import { generateUrlSlug, UrlSlug } from '@src/core/domain/entities/utils/UrlSlugGenerator/UrlSlugGenerator';
 
 export type EntityConstructorData<T extends BaseEntity> = Omit<T, 'id' | 'url'>;
-export class BaseEntity {
+export abstract class BaseEntity {
   constructor(data: EntityConstructorData<BaseEntity>) {
     Object.assign(this, data);
   }
 }
 
-export class BaseEntityWithId extends BaseEntity {
+export abstract class BaseEntityWithId extends BaseEntity {
   id: UUID;
 
   constructor(data: EntityConstructorData<BaseEntity>) {
@@ -20,7 +20,7 @@ export class BaseEntityWithId extends BaseEntity {
 }
 
 type BaseEntityWithUrlConstructorData = EntityConstructorData<BaseEntity> & { name?: string };
-export class BaseEntityWithUrl extends BaseEntityWithId {
+export abstract class BaseEntityWithUrl extends BaseEntityWithId {
   url: UrlSlug;
 
   constructor(data: BaseEntityWithUrlConstructorData) {
