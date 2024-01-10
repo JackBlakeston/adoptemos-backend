@@ -6,7 +6,7 @@ import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseReposit
 
 import { BaseError } from '@src/errors/BaseError';
 
-export class BaseController<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
+export abstract class BaseController<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
   protected repository: T;
 
   constructor(repository: T) {

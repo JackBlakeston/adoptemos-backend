@@ -20,7 +20,7 @@ interface UploadImagesAndAddUrlsToDtoArgs<Entity extends BaseEntity, Dto extends
   dto: Dto;
 }
 
-export class BaseUseCase<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
+export abstract class BaseUseCase<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
   protected repository: T;
 
   constructor(repository: T) {

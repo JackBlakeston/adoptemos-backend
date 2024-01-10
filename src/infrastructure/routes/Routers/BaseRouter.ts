@@ -9,7 +9,7 @@ import { HttpMethods, Url } from '@src/infrastructure/routes/Routers/Routers.typ
 
 export type Route = [HttpMethods, Url, ...RequestHandler[]];
 
-export class BaseRouter<K extends BaseEntity, T extends BaseController<K, BaseRepositoryImpl<K>>> {
+export abstract class BaseRouter<K extends BaseEntity, T extends BaseController<K, BaseRepositoryImpl<K>>> {
   protected controller: T;
   router: express.Router;
 
