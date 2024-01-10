@@ -7,7 +7,13 @@ import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositor
 
 export class DogUseCases extends BaseUseCase<Dog, DogRepositoryImpl> {
   async createDog(createDogDto: CreateDogDto): Promise<Dog> {
-    const dog = new Dog(createDogDto);
+    const dogEntityConstructorData = await this.uploadImagesAndGetConstructorData<Dog, CreateDogDto>({
+      dto: createDogDto,
+      folderName: 'dogs',
+      images: [{ dataPropName: 'imageData', urlPropName: 'imageUrl' }],
+    });
+
+    const dog = new Dog(dogEntityConstructorData);
 
     await this.repository.createDog(dog);
 

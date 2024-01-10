@@ -27,12 +27,14 @@ describe('CreateDogDto', () => {
     });
 
     describe.each`
-      overridenProps         | constraint      | expectedMessage
-      ${{ name: '' }}        | ${'isNotEmpty'} | ${'name should not be empty'}
-      ${{ name: 42 }}        | ${'isString'}   | ${'name must be a string'}
-      ${{ name: undefined }} | ${'isString'}   | ${'name must be a string'}
-      ${{ breed: '' }}       | ${'isNotEmpty'} | ${'breed should not be empty'}
-      ${{ breed: 42 }}       | ${'isString'}   | ${'breed must be a string'}
+      overridenProps          | constraint      | expectedMessage
+      ${{ name: '' }}         | ${'isNotEmpty'} | ${'name should not be empty'}
+      ${{ name: 42 }}         | ${'isString'}   | ${'name must be a string'}
+      ${{ name: undefined }}  | ${'isString'}   | ${'name must be a string'}
+      ${{ breed: '' }}        | ${'isNotEmpty'} | ${'breed should not be empty'}
+      ${{ breed: 42 }}        | ${'isString'}   | ${'breed must be a string'}
+      ${{ imageData: '' }}    | ${'isNotEmpty'} | ${'imageData should not be empty'}
+      ${{ imageData: 'foo' }} | ${'isBase64'}   | ${'imageData must be base64 encoded'}
     `(
       'WHEN breaking the constraint $constraint with $overridenProps',
       ({ overridenProps, constraint, expectedMessage }) => {

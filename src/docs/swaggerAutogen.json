@@ -18,6 +18,9 @@
             "type": "string",
             "example": "mongrel"
           },
+          "imageUrl": {
+            "type": "string"
+          },
           "id": {
             "type": "string",
             "example": "bf60d2e5-24d7-40f7-ab8e-21493cc6f8bf"
@@ -85,6 +88,9 @@
                   "breed": {
                     "type": "string",
                     "example": "mongrel"
+                  },
+                  "imageData": {
+                    "type": "string"
                   }
                 },
                 "required": [
