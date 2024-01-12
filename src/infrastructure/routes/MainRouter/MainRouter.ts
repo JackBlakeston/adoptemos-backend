@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { ENTITY_ROUTERS } from '@src/infrastructure/routes/Routes';
+import { ENDPOINT_ROUTERS } from '@src/infrastructure/routes/Routes';
 
 export class MainRouter {
   router: express.Router;
@@ -15,8 +15,8 @@ export class MainRouter {
       res.status(200).json({ message: 'Welcome to the Adoptame API!' });
     });
 
-    ENTITY_ROUTERS.forEach((EntityRouter) => {
-      this.router.use(new EntityRouter().router);
+    ENDPOINT_ROUTERS.forEach((EndpointRouter) => {
+      this.router.use(new EndpointRouter().router);
     });
   };
 }

@@ -3,8 +3,8 @@ node_modules
 npm-debug.log
 .git
 .vscode
-.timing
 .npmrc
 .env
 .env.sample
 .github
+coverage

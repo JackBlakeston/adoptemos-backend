@@ -11,7 +11,7 @@
     "build": "node ./scripts/build.js",
     "build-start": "npm run build && npm start",
     "watch": "nodemon --watch ./ --ext ts,json --exec npm run build-start",
-    "test": "jest",
+    "test": "jest --collectCoverage",
     "typescript": "node ./scripts/checkTypes.js",
     "lint": "node scripts/lintFiles.js",
     "lint-fix": "npm run lint -s -- --fix",

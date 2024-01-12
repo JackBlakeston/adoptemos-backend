@@ -1,15 +1,11 @@
-import express, { Express } from 'express';
-import swaggerUi from 'swagger-ui-express';
+import express, { json } from 'express';
 
 import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 import { OpenApiService } from '@src/infrastructure/services/OpenApiService/OpenApiService';
 import { StorageProviderService } from '@src/infrastructure/services/StorageProviderService/StorageProviderService';
 
-import { getSwaggerDocument } from '@src/docs/getSwaggerDocument';
-import swaggerUiOptions from '@src/docs/swaggerUiConfig.json';
-
 export class Server {
-  private app: Express;
+  app: express.Express;
   private router: MainRouter;
 
   constructor() {
@@ -18,7 +14,6 @@ export class Server {
 
     this.configureMiddleware();
     this.initializeServices();
-    this.configureSwagger();
     this.configureRoutes();
   }
 
@@ -28,12 +23,7 @@ export class Server {
   };
 
   private configureMiddleware = () => {
-    this.app.use(express.json({ limit: '5mb' }));
-  };
-
-  private configureSwagger = () => {
-    const swaggerDocument = getSwaggerDocument();
-    this.app.use('/openapi', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
+    this.app.use(json({ limit: '5mb' }));
   };
 
   private configureRoutes = (): void => {
