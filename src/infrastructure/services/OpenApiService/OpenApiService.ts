@@ -1,5 +1,7 @@
-import { Express } from 'express';
+import express from 'express';
 import swaggerUi from 'swagger-ui-express';
+
+import { OPENAPI_URL } from '@src/infrastructure/services/StorageProviderService/StorageProviderService.const';
 
 import { getFormattedProjectName } from '@src/utils/GetFormattedProjectName/GetFormattedProjectName';
 
@@ -9,9 +11,9 @@ import swaggerUiOptions from '@src/docs/swaggerUiConfig.json';
 const { API_URL } = process.env;
 
 export class OpenApiService {
-  static initialize = (app: Express) => {
+  static initialize = (app: express.Express) => {
     const swaggerDocument = this.getSwaggerDocument();
-    app.use('/openapi', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
+    app.use(OPENAPI_URL, swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
   };
 
   private static getSwaggerInfo = () => {

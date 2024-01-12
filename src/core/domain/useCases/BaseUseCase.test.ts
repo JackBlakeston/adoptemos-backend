@@ -54,20 +54,34 @@ describe('BaseUseCase', () => {
   });
 
   describe('uploadImagesAndGetConstructorData()', () => {
-    const mockUploadImages = async (image?: string, otherImage?: string) => {
+    interface MockUploadImagesArgs {
+      image?: string;
+      otherImage?: string;
+      name?: string;
+      imageNameSuffix?: string;
+      otherImageNameSuffix?: string;
+    }
+    const mockUploadImages = async ({
+      image,
+      otherImage,
+      name,
+      imageNameSuffix,
+      otherImageNameSuffix,
+    }: MockUploadImagesArgs) => {
       return await mockUseCase.uploadImagesAndGetConstructorData({
         folderName: mockFolderName,
-        dto: { name: mockName, image, otherImage },
+        fileName: name,
+        dto: { name, image, otherImage },
         images: [
-          { urlPropName: 'imageUrl', dataPropName: 'image' },
-          { urlPropName: 'otherImageUrl', dataPropName: 'otherImage' },
+          { urlPropName: 'imageUrl', dataPropName: 'image', nameSuffix: imageNameSuffix },
+          { urlPropName: 'otherImageUrl', dataPropName: 'otherImage', nameSuffix: otherImageNameSuffix },
         ],
       });
     };
 
     describe('WHEN called with image data props', () => {
       it('should upload images', async () => {
-        await mockUploadImages(mockImageData, mockOtherImageData);
+        await mockUploadImages({ image: mockImageData, otherImage: mockOtherImageData, name: mockName });
 
         expect(uploadImageSpy.mock.calls[0][0].includes(mockFolderName)).toBe(true);
         expect(uploadImageSpy.mock.calls[0][1].includes(mockName)).toBe(true);
@@ -78,20 +92,48 @@ describe('BaseUseCase', () => {
       });
 
       it('should return an object with the defined imageUrl props', async () => {
-        const result = await mockUploadImages(mockImageData, mockOtherImageData);
+        const result = await mockUploadImages({ image: mockImageData, otherImage: mockOtherImageData, name: mockName });
 
         expect(result.imageUrl).toEqual(mockImageUrl);
         expect(result.otherImageUrl).toEqual(mockImageUrl);
       });
+    });
 
-      it('should return the same object if no data is found', async () => {
-        const result = await mockUploadImages();
+    describe('WHEN called with no image data', () => {
+      it('should return the same object', async () => {
+        const result = await mockUploadImages({ name: mockName });
 
         expect(result.imageUrl).toBe(undefined);
         expect(result.otherImageUrl).toBe(undefined);
         expect(result).toEqual({
           name: mockName,
         });
+      });
+    });
+
+    describe('WHEN called with no name', () => {
+      it('should upload the images without a name', async () => {
+        await mockUploadImages({ image: mockImageData, otherImage: mockOtherImageData });
+
+        expect(uploadImageSpy.mock.calls[0][1].includes(mockName)).toBe(false);
+        expect(uploadImageSpy.mock.calls[1][1].includes(mockName)).toBe(false);
+      });
+    });
+
+    describe('WHEN called with name suffixes', () => {
+      it('should upload the images the correct suffix', async () => {
+        const mockImageNameSuffix = 'foo';
+        const mockOtherImageNameSuffix = 'bar';
+        await mockUploadImages({
+          image: mockImageData,
+          otherImage: mockOtherImageData,
+          name: mockName,
+          imageNameSuffix: mockImageNameSuffix,
+          otherImageNameSuffix: mockOtherImageNameSuffix,
+        });
+
+        expect(uploadImageSpy.mock.calls[0][1].includes(mockImageNameSuffix)).toBe(true);
+        expect(uploadImageSpy.mock.calls[1][1].includes(mockOtherImageNameSuffix)).toBe(true);
       });
     });
   });

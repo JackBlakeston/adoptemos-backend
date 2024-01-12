@@ -1,11 +1,11 @@
-import express, { Express } from 'express';
+import express, { json } from 'express';
 
 import { MainRouter } from '@src/infrastructure/routes/MainRouter/MainRouter';
 import { OpenApiService } from '@src/infrastructure/services/OpenApiService/OpenApiService';
 import { StorageProviderService } from '@src/infrastructure/services/StorageProviderService/StorageProviderService';
 
 export class Server {
-  private app: Express;
+  app: express.Express;
   private router: MainRouter;
 
   constructor() {
@@ -23,7 +23,7 @@ export class Server {
   };
 
   private configureMiddleware = () => {
-    this.app.use(express.json({ limit: '5mb' }));
+    this.app.use(json({ limit: '5mb' }));
   };
 
   private configureRoutes = (): void => {

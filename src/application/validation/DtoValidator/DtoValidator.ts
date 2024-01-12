@@ -14,8 +14,8 @@ export class DtoValidator<T extends typeof BaseDto> {
   }
 
   private getValidationErrorMessages = (errors: ValidationError[]): string[] => {
-    return errors.flatMap((error) => {
-      return Object.values(error.constraints ?? {});
+    return errors.flatMap(({ constraints }) => {
+      return Object.values(constraints ?? {});
     });
   };
 
@@ -30,7 +30,6 @@ export class DtoValidator<T extends typeof BaseDto> {
     if (errors.length) {
       const validationErrorMessages = this.getValidationErrorMessages(errors);
       const outputErrorMessage = this.getOutputErrorMessage(validationErrorMessages);
-
       BaseController.sendErrorResponse(res, new BadRequestError(outputErrorMessage));
     }
 

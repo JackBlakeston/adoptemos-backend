@@ -2,7 +2,7 @@ import { Bucket } from '@google-cloud/storage';
 import admin from 'firebase-admin';
 import { Readable } from 'stream';
 
-export type ImageUrl = `https://firebasestorage.googleapis.com/v0/b/adoptemos-server.appspot.com/o/${string}/${string}`;
+export type ImageUrl = `https://firebasestorage.googleapis.com/${string}/${string}/${string}`;
 
 export class ImageService {
   private static getWriteSteam = (bucket: Bucket, path: string) => {
@@ -35,7 +35,6 @@ export class ImageService {
       writeStream.on('finish', async () => {
         try {
           const [url] = await file.getSignedUrl({ action: 'read', expires: '01-01-2500' });
-
           resolve(url);
         } catch (error) {
           reject(error);

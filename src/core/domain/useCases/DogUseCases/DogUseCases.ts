@@ -10,6 +10,7 @@ export class DogUseCases extends BaseUseCase<Dog, DogRepositoryImpl> {
     const dogEntityConstructorData = await this.uploadImagesAndGetConstructorData<Dog, CreateDogDto>({
       dto: createDogDto,
       folderName: 'dogs',
+      fileName: createDogDto.name,
       images: [{ dataPropName: 'imageData', urlPropName: 'imageUrl' }],
     });
 
