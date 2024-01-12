@@ -18,7 +18,7 @@ describe('StorageProviderService', () => {
 
         expect(initializeAppSpy).toHaveBeenCalledTimes(1);
         expect(certSpy).toHaveBeenCalledTimes(1);
-        expect(certSpy).toHaveBeenCalledWith('./secrets/FirebaseServiceAccountKey.json');
+        expect(certSpy).toHaveBeenCalledWith({});
       });
     });
   });

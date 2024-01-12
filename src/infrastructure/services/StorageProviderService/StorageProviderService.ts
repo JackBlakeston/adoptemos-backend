@@ -1,11 +1,10 @@
 import admin from 'firebase-admin';
 
-import { FIREBASE_SERVICE_ACCOUNT_KEY_PATH } from '@src/infrastructure/services/StorageProviderService/StorageProviderService.const';
-
 export class StorageProviderService {
   static initialize = () => {
+    const serviceAccountKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY || '{}');
     admin.initializeApp({
-      credential: admin.credential.cert(FIREBASE_SERVICE_ACCOUNT_KEY_PATH),
+      credential: admin.credential.cert(serviceAccountKey),
     });
   };
 }

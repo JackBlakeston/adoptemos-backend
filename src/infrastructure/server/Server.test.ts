@@ -9,6 +9,13 @@ jest.mock('@src/infrastructure/routes/MainRouter/MainRouter', () => {
     MainRouter: jest.fn(),
   };
 });
+jest.mock('@src/infrastructure/services/StorageProviderService/StorageProviderService', () => {
+  return {
+    StorageProviderService: {
+      initialize: jest.fn(),
+    },
+  };
+});
 jest.mock('@src/infrastructure/services/OpenApiService/OpenApiService', () => {
   return {
     OpenApiService: {

@@ -2,6 +2,8 @@ import { Bucket } from '@google-cloud/storage';
 import admin from 'firebase-admin';
 import { Readable } from 'stream';
 
+const { FIREBASE_BUCKET_URL } = process.env;
+
 export type ImageUrl = `https://firebasestorage.googleapis.com/${string}/${string}/${string}`;
 
 export class ImageService {
@@ -24,7 +26,7 @@ export class ImageService {
 
   static uploadImage = async (folderPath: string, fileName: string, base64Data: string): Promise<string> => {
     const filePath = `${folderPath}/${fileName}.jpeg`;
-    const bucket = admin.storage().bucket('gs://adoptemos-server.appspot.com');
+    const bucket = admin.storage().bucket(FIREBASE_BUCKET_URL);
     const file = bucket.file(filePath);
     const writeStream = this.getWriteSteam(bucket, filePath);
     const bufferStream = this.getBufferStream(base64Data);
