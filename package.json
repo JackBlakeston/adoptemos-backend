@@ -8,11 +8,11 @@
   "main": "lib/main.js",
   "scripts": {
     "start": "node lib/main.js",
-    "build": "node ./scripts/build.js",
+    "build": "node scripts/build.js",
     "build-start": "npm run build && npm start",
     "watch": "nodemon --watch ./ --ext ts,json --exec npm run build-start",
     "test": "jest --collectCoverage",
-    "typescript": "node ./scripts/checkTypes.js",
+    "typescript": "node scripts/checkTypes.js",
     "lint": "node scripts/lintFiles.js",
     "lint-fix": "npm run lint -s -- --fix",
     "auto-docs": "source .env && node scripts/buildSwaggerFiles.js && node scripts/swaggerAutogen.js",
@@ -20,7 +20,8 @@
     "docker-build": "node scripts/docker.js build",
     "docker-up": "node scripts/docker.js up",
     "docker-down": "node scripts/docker.js down",
-    "docker-up-ci": "docker-compose up --no-deps -d app"
+    "docker-up-ci": "docker-compose up --no-deps -d app",
+    "seed": "node scripts/seedDb.js"
   },
   "repository": {
     "type": "git",
