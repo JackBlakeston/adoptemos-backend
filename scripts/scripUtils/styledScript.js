@@ -25,8 +25,8 @@ export const runStyledScript = async ({
     stopTimer && stopTimer();
     logColor([32, 1, 4], `\n${successMsg}`);
   } catch (err) {
+    shouldBubbleError && logColor([31], `\n${err.message}`);
     logColor([31, 1, 4], `\n${failMessage}`);
-    shouldBubbleError && logColor([31], err.message);
     console.log('\n');
     process.exit(1);
   }
