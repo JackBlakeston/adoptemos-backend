@@ -1,4 +1,4 @@
-import { color, logColor } from './cliColors.js';
+import { color } from './cliColors.js';
 import { hideCursor } from './clirCursor.js';
 
 export const startTimer = (decimals = 1, intervalMs = 10) => {
