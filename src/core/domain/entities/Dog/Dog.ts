@@ -3,6 +3,7 @@ import { BaseEntityWithUrl, EntityConstructorData } from '@src/core/domain/entit
 export class Dog extends BaseEntityWithUrl {
   name!: string;
   breed?: string;
+  age?: number;
   imageUrl?: string;
 
   constructor(data: EntityConstructorData<Dog>) {
