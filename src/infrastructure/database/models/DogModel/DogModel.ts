@@ -7,6 +7,7 @@ import { BaseModel } from '@src/infrastructure/database/models/BaseModel';
 const schemaDefinition: SchemaDefinition = {
   name: { type: String, required: true },
   breed: { type: String },
+  age: { type: Number },
   imageUrl: { type: String },
 };
 

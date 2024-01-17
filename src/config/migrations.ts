@@ -8,7 +8,7 @@ export = {
     databaseName: MONGODB_NAME,
   },
   migrationsDir: 'lib/src/infrastructure/database/migrations',
-  changelogCollectionName: 'testChangelog',
+  changelogCollectionName: 'migrationChangelog',
   migrationFileExtension: '.cjs',
   useFileHash: false,
 };

@@ -5,6 +5,8 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
+RUN node scripts/buildMigrations.js
+
 FROM node:20.9-bullseye-slim
 
 WORKDIR /app
@@ -12,4 +14,4 @@ COPY --from=build /app ./
 
 EXPOSE $PORT
 
-CMD npm run watch
+CMD node scripts/migrateDb.js up --container && npm run watch

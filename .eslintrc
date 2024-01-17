@@ -7,7 +7,7 @@
   },
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "plugins": ["@typescript-eslint", "prettier", "@limegrass/import-alias", "simple-import-sort"],
-  "ignorePatterns": ["scripts/**/*.js", "lib/**/*.js"],
+  "ignorePatterns": ["scripts/**/*.js", "lib/**/*.js", "coverage/"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": ["warn"],
