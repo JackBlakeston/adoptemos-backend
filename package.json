@@ -22,8 +22,10 @@
     "docker-down": "node scripts/docker.js down",
     "docker-up-ci": "docker-compose up --no-deps -d app",
     "seed": "node scripts/seedDb.js",
-    "migration-up": "node scripts/migrateDb.js up",
-    "migration-down": "node scripts/migrateDb.js down",
+    "migration": "node scripts/migrateDb.js",
+    "migration-up": "npm run migration up",
+    "migration-down": "npm run migration down",
+    "migration-status": "npm run migration status",
     "migration-create": "node scripts/createMigration.js"
   },
   "repository": {
