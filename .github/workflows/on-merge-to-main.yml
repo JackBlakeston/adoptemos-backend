@@ -11,12 +11,12 @@ jobs:
     secrets: inherit
 
   validate:
-    needs: build
+    needs: [build]
     uses: ./.github/workflows/validate-code.yml
     secrets: inherit
 
   test:
-    needs: build
+    needs: [build]
     uses: ./.github/workflows/tests.yml
     secrets: inherit
 
