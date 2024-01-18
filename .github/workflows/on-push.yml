@@ -11,6 +11,6 @@ jobs:
     secrets: inherit
 
   test:
-    needs: build
+    needs: [build]
     uses: ./.github/workflows/tests.yml
     secrets: inherit

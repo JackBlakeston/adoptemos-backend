@@ -1,6 +1,5 @@
 name: Validate code
-on:
-  workflow_call:
+on: workflow_call
 jobs:
   validate-code:
     runs-on: ubuntu-latest
