@@ -47,8 +47,9 @@ describe('Server class', () => {
 
       it('should add middleware to the express server', () => {
         const expressUseSpy = jest.spyOn(server.app, 'use');
+        const expectedMiddlewareCalls = 2;
 
-        expect(expressUseSpy).toHaveBeenCalled();
+        expect(expressUseSpy).toHaveBeenCalledTimes(expectedMiddlewareCalls + 1);
       });
 
       it('should initialize the services', () => {
