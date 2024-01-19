@@ -3,18 +3,14 @@ import { Request, Response } from 'express';
 import { DogUseCases } from '@src/core/domain/useCases/DogUseCases/DogUseCases';
 
 import { DogController } from '@src/application/controllers/DogController/DogController';
-import {
-  getErrorResponseObject,
-  getMockRequest,
-  getMockResponse,
-  getSuccessResponseObject,
-} from '@src/application/controllers/utils/testing/ControllerTestingUtils';
 
 import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
 
 import { NotFoundError } from '@src/errors/NotFoundError/NotFoundError';
 
-import { mockCreateDogDto, mockDogWithoutId } from '@src/fixtures/MockEntities/MockDog';
+import { mockCreateDogDto, mockDog } from '@src/tests/fixtures/MockEntities/MockDog';
+import { getMockRequest } from '@src/tests/fixtures/MockRequest';
+import { getErrorResponseObject, getMockResponse, getSuccessResponseObject } from '@src/tests/fixtures/MockResponse';
 
 describe('DogController', () => {
   const mockErrorMessage = 'Test error message';
@@ -36,14 +32,14 @@ describe('DogController', () => {
     describe('WHEN dog creation is successful', () => {
       it('should send a response with a dog object and status 201', async () => {
         createDogUseCaseSpy.mockImplementation(async () => {
-          return mockDogWithoutId;
+          return mockDog;
         });
         const expectedStatusCode = 201;
 
         await dogController.createDog(mockReq, mockRes);
 
         expect(mockRes.status).toHaveBeenCalledWith(expectedStatusCode);
-        expect(mockRes.send).toHaveBeenCalledWith(getSuccessResponseObject(mockCreateDogDto));
+        expect(mockRes.send).toHaveBeenCalledWith(getSuccessResponseObject(mockDog));
       });
     });
 

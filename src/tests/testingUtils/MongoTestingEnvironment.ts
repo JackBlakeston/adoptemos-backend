@@ -2,9 +2,21 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
 import { Database } from '@src/infrastructure/database/Database';
+import { SeedAndModel } from '@src/infrastructure/database/seeds/seedList';
 
-export const useMongoTestingEnvironment = () => {
+export const useMongoTestingEnvironment = <T>(seedsAndModels?: SeedAndModel<T>[]) => {
   let mongoServer: MongoMemoryServer;
+
+  const seedDb = async () => {
+    if (seedsAndModels) {
+      await Promise.all(
+        seedsAndModels.map(async ({ seed, model }) => {
+          await model.deleteMany();
+          await model.insertMany(seed);
+        }),
+      );
+    }
+  };
 
   const createAndConnectToServer = async () => {
     mongoServer = await MongoMemoryServer.create();
@@ -29,6 +41,8 @@ export const useMongoTestingEnvironment = () => {
   beforeAll(createAndConnectToServer);
 
   afterAll(tearDownServer);
+
+  beforeEach(seedDb);
 
   afterEach(dropAllCollectionsInDb);
 };

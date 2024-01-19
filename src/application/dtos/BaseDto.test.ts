@@ -1,4 +1,4 @@
-import { MockDto } from '@src/fixtures/ClassMocks';
+import { MockDto } from '@src/tests/fixtures/MockBaseClasses';
 
 describe('BaseDto', () => {
   describe('extended to create a DTO class', () => {

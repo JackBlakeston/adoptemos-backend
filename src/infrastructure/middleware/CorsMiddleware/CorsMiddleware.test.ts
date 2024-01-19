@@ -1,7 +1,8 @@
 import { corsMiddleware } from '@src/infrastructure/middleware/CorsMiddleware/CorsMiddleware';
 import { Request } from 'express';
 
-import { getMockRequest, getMockResponse } from '@src/application/controllers/utils/testing/ControllerTestingUtils';
+import { getMockRequest } from '@src/tests/fixtures/MockRequest';
+import { getMockResponse } from '@src/tests/fixtures/MockResponse';
 
 describe('corsMiddleware()', () => {
   const mockOrigin = 'foo-url';

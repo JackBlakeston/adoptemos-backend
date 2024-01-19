@@ -1,17 +1,4 @@
-import { Request, Response } from 'express';
-import { IncomingHttpHeaders } from 'http';
-
-interface GetMockRequestArgs {
-  mockBody?: AnyObj;
-  mockHeaders?: IncomingHttpHeaders;
-}
-
-export const getMockRequest = ({ mockHeaders, mockBody }: GetMockRequestArgs): Request => {
-  const req: Partial<Request> = {};
-  req.body = mockBody ?? {};
-  req.headers = mockHeaders ?? {};
-  return req as Request;
-};
+import { Response } from 'express';
 
 export const getMockResponse = (): Response => {
   const res: Partial<Response> = {};

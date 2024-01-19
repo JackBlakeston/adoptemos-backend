@@ -1,27 +1,28 @@
 import { Dog } from '@src/core/domain/entities/Dog/Dog';
 
 import { DogModel } from '@src/infrastructure/database/models/DogModel/DogModel';
+import { dogSeed } from '@src/infrastructure/database/seeds/DogSeed/DogSeed';
 import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositoryImpl/DogRepositoryImpl';
-import { useMongoTestingEnvironment } from '@src/infrastructure/repositories/utils/testing/RepositoriesTestingUtils';
 
 import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
-import { mockDog } from '@src/fixtures/MockEntities/MockDog';
+import { mockDog } from '@src/tests/fixtures/MockEntities/MockDog';
+import { useMongoTestingEnvironment } from '@src/tests/testingUtils/MongoTestingEnvironment';
 
 describe('DogRepositoryImpl', () => {
   const dogRepository = new DogRepositoryImpl(DogModel);
 
-  useMongoTestingEnvironment();
+  useMongoTestingEnvironment([{ model: DogModel, seed: dogSeed }]);
 
   describe('createDog method', () => {
     describe('WHEN creating a dog successfully', () => {
       it('should create the dog in the db and return the created dog', async () => {
         const createdDog = await dogRepository.createDog(mockDog);
-        const savedDbDogs = await DogModel.find().exec();
-        const savedDogs = savedDbDogs.map((dog) => dog.toObject());
+        const savedDbDogs = await DogModel.findOne({ id: createdDog.id }).exec();
+        const savedDogs = savedDbDogs?.toObject();
 
         expect(createdDog).toEqual(mockDog);
-        expect(savedDogs).toEqual([mockDog]);
+        expect(savedDogs).toEqual(mockDog);
       });
     });
 
@@ -42,12 +43,9 @@ describe('DogRepositoryImpl', () => {
   describe('getAllDogs method', () => {
     describe('WHEN getting all dogs successfully', () => {
       it('should return all dogs in db', async () => {
-        const dogDocument = new DogModel(mockDog);
-        await dogDocument.save();
-
         const savedDogs = await dogRepository.getAllDogs();
 
-        expect(savedDogs).toEqual([mockDog]);
+        expect(savedDogs).toEqual(dogSeed);
       });
     });
 
