@@ -1,8 +1,15 @@
 import { Request, Response } from 'express';
+import { IncomingHttpHeaders } from 'http';
 
-export const getMockRequest = <T extends object>(mock?: T): Request => {
+interface GetMockRequestArgs {
+  mockBody?: AnyObj;
+  mockHeaders?: IncomingHttpHeaders;
+}
+
+export const getMockRequest = ({ mockHeaders, mockBody }: GetMockRequestArgs): Request => {
   const req: Partial<Request> = {};
-  req.body = mock ?? {};
+  req.body = mockBody ?? {};
+  req.headers = mockHeaders ?? {};
   return req as Request;
 };
 
@@ -11,6 +18,7 @@ export const getMockResponse = (): Response => {
   res.send = jest.fn().mockReturnValue(res);
   res.status = jest.fn().mockReturnValue(res);
   res.json = jest.fn().mockReturnValue(res);
+  res.header = jest.fn().mockReturnValue(res);
   return res as Response;
 };
 

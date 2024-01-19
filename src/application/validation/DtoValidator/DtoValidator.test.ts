@@ -21,7 +21,7 @@ describe('DtoValidator', () => {
         const mockRequestBody = {
           requiredField: 'foo',
         };
-        mockReq = getMockRequest(mockRequestBody);
+        mockReq = getMockRequest({ mockBody: mockRequestBody });
 
         const validator = new DtoValidator(MockDto);
         await validator.validateDto(mockReq, mockRes, mockNext);
@@ -33,8 +33,7 @@ describe('DtoValidator', () => {
 
     describe('WHEN request body is not valid', () => {
       it('should not call the next function and should send an error response with status 400', async () => {
-        const mockRequestBody = {};
-        mockReq = getMockRequest(mockRequestBody);
+        mockReq = getMockRequest({});
 
         const validator = new DtoValidator(MockDto);
         await validator.validateDto(mockReq, mockRes, mockNext);

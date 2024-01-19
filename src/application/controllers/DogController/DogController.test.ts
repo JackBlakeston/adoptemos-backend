@@ -30,11 +30,11 @@ describe('DogController', () => {
   });
 
   describe('createDog method', () => {
+    mockReq = getMockRequest({ mockBody: mockCreateDogDto });
     const createDogUseCaseSpy = jest.spyOn(DogUseCases.prototype, 'createDog');
 
     describe('WHEN dog creation is successful', () => {
       it('should send a response with a dog object and status 201', async () => {
-        mockReq = getMockRequest(mockCreateDogDto);
         createDogUseCaseSpy.mockImplementation(async () => {
           return mockDogWithoutId;
         });
@@ -49,7 +49,6 @@ describe('DogController', () => {
 
     describe('WHEN dog creation is not successful', () => {
       it('should send a response with an error object and an error status', async () => {
-        mockReq = getMockRequest(mockCreateDogDto);
         createDogUseCaseSpy.mockImplementation(async () => {
           throw new NotFoundError(mockErrorMessage);
         });
@@ -65,11 +64,11 @@ describe('DogController', () => {
 
   describe('getAllDogs method', () => {
     const getAllDogsUseCaseSpy = jest.spyOn(DogUseCases.prototype, 'getAllDogs');
+    mockReq = getMockRequest({});
 
-    describe('WHEN successful in getting all dogs', () => {
+    describe('WHEN getting all dogs successfully', () => {
       it('should send a response with a dog collection and status 200', async () => {
         const mockDogCollection = Array(2).fill(mockCreateDogDto);
-        mockReq = getMockRequest();
         getAllDogsUseCaseSpy.mockImplementation(async () => {
           return mockDogCollection;
         });
@@ -82,9 +81,8 @@ describe('DogController', () => {
       });
     });
 
-    describe('WHEN dog creation is not successful', () => {
+    describe('WHEN failing to get all dogs', () => {
       it('should send a response with an error object and an error status', async () => {
-        mockReq = getMockRequest();
         getAllDogsUseCaseSpy.mockImplementation(async () => {
           throw new NotFoundError(mockErrorMessage);
         });
