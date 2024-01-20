@@ -7,4 +7,5 @@ npm-debug.log
 .env
 .env.sample
 .github
+.jest/coverage
 coverage
