@@ -94,7 +94,8 @@ The `main` branch is protected so you can't push directly to it.
 
 Upon pushing to a feature branch, the following jobs will be executed:
 - **Build:** Builds Docker image and uploads it as an artifact
-- **Test:** Runs Unit Tests
+- **Unit Tests:** Runs Unit Tests
+- **Integration Tests:** Runs Integration Tests
 
 Upon merging a pull request into `main`, the previous jobs will run along with:
 - **Validate:** Lints and typechecks the codebase

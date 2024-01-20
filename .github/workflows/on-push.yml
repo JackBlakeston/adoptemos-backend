@@ -10,9 +10,9 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     secrets: inherit
 
-  test:
+  unit-tests:
     needs: [build]
-    uses: ./.github/workflows/tests.yml
+    uses: ./.github/workflows/unit-tests.yml
     secrets: inherit
 
   integration-tests:

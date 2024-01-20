@@ -15,9 +15,9 @@ jobs:
     uses: ./.github/workflows/validate-code.yml
     secrets: inherit
 
-  test:
+  unit-tests:
     needs: [build]
-    uses: ./.github/workflows/tests.yml
+    uses: ./.github/workflows/unit-tests.yml
     secrets: inherit
 
   integration-tests:
@@ -26,6 +26,6 @@ jobs:
     secrets: inherit
 
   deploy:
-    needs: [validate, test, integration-tests]
+    needs: [validate, unit-tests, integration-tests]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
