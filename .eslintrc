@@ -27,6 +27,8 @@
       "warn",
       {
         "groups": [
+          // Test utility imports
+          ["^\\u0000.*@src/tests/testingUtils"],
           // External libraries
           ["^@?\\w"],
           // Internal paths
