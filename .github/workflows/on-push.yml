@@ -14,3 +14,8 @@ jobs:
     needs: [build]
     uses: ./.github/workflows/tests.yml
     secrets: inherit
+
+  integration-tests:
+    needs: [build]
+    uses: ./.github/workflows/integration-tests.yml
+    secrets: inherit

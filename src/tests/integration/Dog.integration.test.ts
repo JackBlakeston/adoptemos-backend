@@ -19,7 +19,7 @@ import { spyAndMockError } from '@src/tests/testingUtils/ThrowError';
 describe('Dog integration test', () => {
   useMongoTestingEnvironment([{ model: DogModel, seed: dogSeed }]);
 
-  const server = new Server();
+  const app = new Server().app;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -28,7 +28,7 @@ describe('Dog integration test', () => {
   describe('GET /dogs', () => {
     describe('WHEN receiving a request', () => {
       it('should retrieve a list of all dogs', async () => {
-        const response = await request(server.app).get('/dogs');
+        const response = await request(app).get('/dogs');
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual(getSuccessResponseObject(dogSeed));
@@ -40,7 +40,7 @@ describe('Dog integration test', () => {
         const mockErrorMessage = 'foo error';
         spyAndMockError(DogUseCases, 'getAllDogs', mockErrorMessage);
 
-        const response = await request(server.app).get('/dogs');
+        const response = await request(app).get('/dogs');
 
         expect(response.status).toBe(500);
         expect(response.body).toEqual(getErrorResponseObject(mockErrorMessage));
@@ -51,7 +51,7 @@ describe('Dog integration test', () => {
   describe('POST /dogs', () => {
     describe('WHEN receiving a request with a valid body', () => {
       it('should return the created dog', async () => {
-        const response = await request(server.app).post('/dogs').send(mockCreateDogDto);
+        const response = await request(app).post('/dogs').send(mockCreateDogDto);
         const responseData = response.body.data;
 
         expect(response.status).toBe(201);
@@ -59,9 +59,9 @@ describe('Dog integration test', () => {
       });
 
       it('should create the dog successfully', async () => {
-        const createDogResponse = await request(server.app).post('/dogs').send(mockCreateDogDto);
+        const createDogResponse = await request(app).post('/dogs').send(mockCreateDogDto);
         const createdDogId = createDogResponse.body.data.id;
-        const getDogsResponse = await request(server.app).get('/dogs');
+        const getDogsResponse = await request(app).get('/dogs');
         const foundDog = getDogsResponse.body.data.find((dog: Dog) => dog.id === createdDogId);
 
         expect(omitProps(foundDog, ['id', 'url'])).toEqual(mockCreateDogDto);
@@ -70,7 +70,7 @@ describe('Dog integration test', () => {
 
     describe('WHEN receiving a request with an invalid body', () => {
       it('should send the correct status code and error response', async () => {
-        const response = await request(server.app).post('/dogs');
+        const response = await request(app).post('/dogs');
 
         expect(response.status).toBe(400);
         expect(response.body).toEqual(
@@ -84,7 +84,7 @@ describe('Dog integration test', () => {
         const mockErrorMessage = 'foo error';
         spyAndMockError(DogUseCases, 'createDog', mockErrorMessage);
 
-        const response = await request(server.app).post('/dogs').send(mockCreateDogDto);
+        const response = await request(app).post('/dogs').send(mockCreateDogDto);
 
         expect(response.status).toBe(500);
         expect(response.body).toEqual(getErrorResponseObject(mockErrorMessage));

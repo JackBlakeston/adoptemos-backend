@@ -1,7 +1,7 @@
-name: Tests
+name: Integration Tests
 on: workflow_call
 jobs:
-  test:
+  integration-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -10,6 +10,6 @@ jobs:
         uses: ./.github/actions/run-containers
         with:
           image-name: ${{ secrets.APP_NAME }}
-      - name: Run tests
+      - name: Run integration tests
         run: |
-          docker exec ${{ secrets.APP_NAME }} npm test
+          docker exec ${{ secrets.APP_NAME }} npm run test-integration
