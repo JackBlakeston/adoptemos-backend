@@ -27,6 +27,8 @@
       "warn",
       {
         "groups": [
+          // Test utility imports
+          ["^\\u0000.*@src/tests/testingUtils"],
           // External libraries
           ["^@?\\w"],
           // Internal paths
@@ -42,8 +44,8 @@
           ["^@src/utils/"],
           ["^@src/errors/"],
           ["^@src/config/"],
-          ["^@src/fixtures/"],
           ["^@src/docs/"],
+          ["^@src/tests/"],
           // Uncaught paths
           ["^\\u0000"]
         ]

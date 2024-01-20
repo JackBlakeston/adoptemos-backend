@@ -1,7 +1,7 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 
-import { OPENAPI_URL } from '@src/infrastructure/services/StorageProviderService/StorageProviderService.const';
+import { OPENAPI_URL } from '@src/infrastructure/services/OpenApiService/OpenApiService.const';
 
 import { getFormattedProjectName } from '@src/utils/GetFormattedProjectName/GetFormattedProjectName';
 

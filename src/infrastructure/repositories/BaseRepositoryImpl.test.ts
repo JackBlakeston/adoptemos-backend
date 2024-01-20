@@ -1,5 +1,5 @@
-import { MockRepositoryImpl } from '@src/fixtures/ClassMocks';
-import { MockModel } from '@src/fixtures/ModelMocks';
+import { MockRepositoryImpl } from '@src/tests/fixtures/MockBaseClasses';
+import { MockModel } from '@src/tests/fixtures/MockModel';
 
 describe('BaseRepositoryImpl', () => {
   describe('extended to create a repository class', () => {

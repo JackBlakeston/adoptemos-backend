@@ -6,6 +6,11 @@ import { BaseRepositoryImpl } from '@src/infrastructure/repositories/BaseReposit
 
 import { BaseError } from '@src/errors/BaseError';
 
+export interface ResponseBody {
+  data: AnyObj;
+  success: boolean;
+}
+
 export abstract class BaseController<K extends BaseEntity, T extends BaseRepositoryImpl<K>> {
   protected repository: T;
 
@@ -13,8 +18,8 @@ export abstract class BaseController<K extends BaseEntity, T extends BaseReposit
     this.repository = repository;
   }
 
-  static sendSuccessResponse = <T>(res: Response, data: T, statusCode: number) => {
-    const responseBody = { data, success: true };
+  static sendSuccessResponse = <T extends AnyObj>(res: Response, data: T, statusCode: number) => {
+    const responseBody: ResponseBody = { data, success: true };
     res.status(statusCode).send(responseBody);
   };
 

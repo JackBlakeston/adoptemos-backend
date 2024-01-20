@@ -1,7 +1,7 @@
 import { ImageService } from '@src/infrastructure/services/ImageService/ImageService';
 
-import { MockRepositoryImpl, MockUseCase } from '@src/fixtures/ClassMocks';
-import { MockModel } from '@src/fixtures/ModelMocks';
+import { MockRepositoryImpl, MockUseCase } from '@src/tests/fixtures/MockBaseClasses';
+import { MockModel } from '@src/tests/fixtures/MockModel';
 
 jest.mock('@src/infrastructure/services/ImageService/ImageService', () => {
   return {

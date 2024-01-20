@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 
-import { getMockRequest, getMockResponse } from '@src/application/controllers/utils/testing/ControllerTestingUtils';
 import { DtoValidator } from '@src/application/validation/DtoValidator/DtoValidator';
 
-import { MockDto } from '@src/fixtures/ClassMocks';
+import { MockDto } from '@src/tests/fixtures/MockBaseClasses';
+import { getMockRequest } from '@src/tests/fixtures/MockRequest';
+import { getMockResponse } from '@src/tests/fixtures/MockResponse';
 
 describe('DtoValidator', () => {
   let mockReq: Request;
@@ -21,7 +22,7 @@ describe('DtoValidator', () => {
         const mockRequestBody = {
           requiredField: 'foo',
         };
-        mockReq = getMockRequest(mockRequestBody);
+        mockReq = getMockRequest({ mockBody: mockRequestBody });
 
         const validator = new DtoValidator(MockDto);
         await validator.validateDto(mockReq, mockRes, mockNext);
@@ -33,8 +34,7 @@ describe('DtoValidator', () => {
 
     describe('WHEN request body is not valid', () => {
       it('should not call the next function and should send an error response with status 400', async () => {
-        const mockRequestBody = {};
-        mockReq = getMockRequest(mockRequestBody);
+        mockReq = getMockRequest({});
 
         const validator = new DtoValidator(MockDto);
         await validator.validateDto(mockReq, mockRes, mockNext);

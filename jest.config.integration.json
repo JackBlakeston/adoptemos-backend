@@ -1,8 +1,8 @@
 {
   "testTimeout": 20000,
   "testEnvironment": "node",
-  "roots": ["<rootDir>/src"],
-  "testMatch": ["**/*.test.ts"],
+  "roots": ["<rootDir>/src/tests/integration"],
+  "testMatch": ["**/*.integration.test.ts"],
   "transform": {
     "^.+\\.ts$": ["ts-jest"]
   },
@@ -10,7 +10,13 @@
     "^@src/(.*)$": "<rootDir>/src/$1"
   },
   "collectCoverageFrom": ["src/**/*.ts"],
-  "coveragePathIgnorePatterns": ["src/main.ts", "src/config", "src/infrastructure/database/seeds"],
+  "coveragePathIgnorePatterns": [
+    "src/main.ts",
+    "src/config",
+    "src/infrastructure/database/seeds",
+    "src/infrastructure/database/migrations",
+    "src/tests"
+  ],
   "coverageDirectory": "coverage",
   "coverageReporters": ["lcov", "text", "html"]
 }
