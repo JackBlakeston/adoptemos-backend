@@ -18,11 +18,11 @@ describe('DogRepositoryImpl', () => {
     describe('WHEN creating a dog successfully', () => {
       it('should create the dog in the db and return the created dog', async () => {
         const createdDog = await dogRepository.createDog(mockDog);
-        const savedDbDogs = await DogModel.findOne({ id: createdDog.id }).exec();
-        const savedDogs = savedDbDogs?.toObject();
+        const savedDbDog = await DogModel.findOne({ id: createdDog.id }).exec();
+        const savedDog = savedDbDog?.toObject();
 
         expect(createdDog).toEqual(mockDog);
-        expect(savedDogs).toEqual(mockDog);
+        expect(savedDog).toEqual(mockDog);
       });
     });
 
