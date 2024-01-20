@@ -8,5 +8,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.validate": ["typescript"],
-  "jestrunner.jestCommand": "npx jest -c .jest/jest.config.runner.json"
+  "jestrunner.jestCommand": "npx jest -c .jest/jest.config.js"
 }
