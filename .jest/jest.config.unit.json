@@ -1,8 +1,10 @@
 {
   "testTimeout": 20000,
   "testEnvironment": "node",
-  "roots": ["<rootDir>/src/tests/integration"],
-  "testMatch": ["**/*.integration.test.ts"],
+  "rootDir": "../",
+  "roots": ["<rootDir>/src"],
+  "testMatch": ["**/*.test.ts"],
+  "testPathIgnorePatterns": ["src/tests"],
   "transform": {
     "^.+\\.ts$": ["ts-jest"]
   },
@@ -17,6 +19,6 @@
     "src/infrastructure/database/migrations",
     "src/tests"
   ],
-  "coverageDirectory": "coverage",
+  "coverageDirectory": ".jest/coverage",
   "coverageReporters": ["lcov", "text", "html"]
 }

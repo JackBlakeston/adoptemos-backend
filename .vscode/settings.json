@@ -7,5 +7,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "eslint.validate": ["typescript"]
+  "eslint.validate": ["typescript"],
+  "jestrunner.jestCommand": "npx jest -c .jest/jest.config.runner.json"
 }
