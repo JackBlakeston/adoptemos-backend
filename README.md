@@ -60,7 +60,6 @@ The project is set up to be run from Docker containers. There is a `Dockerfile` 
 - Start docker containers: `npm run docker-up`
 - Stop docker containers: `npm run docker-down`
 - Build images and start containers: `npm run docker-start`
-- Start containers in CI: `npm run docker-up-ci`
 
 ### Dev
 

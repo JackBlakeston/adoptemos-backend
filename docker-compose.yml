@@ -22,6 +22,9 @@ services:
     restart: unless-stopped
     container_name: $APP_NAME
     env_file: ./.env
+    environment:
+      - FIREBASE_SERVICE_ACCOUNT_KEY=$FIREBASE_SERVICE_ACCOUNT_KEY
+      - FIREBASE_BUCKET_URL=$FIREBASE_BUCKET_URL
     ports:
       - $PORT:$PORT
     stdin_open: true

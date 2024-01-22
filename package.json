@@ -23,7 +23,6 @@
     "docker-build": "node scripts/docker.js build",
     "docker-up": "node scripts/docker.js up",
     "docker-down": "node scripts/docker.js down",
-    "docker-up-ci": "docker-compose up --no-deps -d app",
     "seed": "node scripts/seedDb.js",
     "migration": "node scripts/migrateDb.js",
     "migration-up": "npm run migration up",

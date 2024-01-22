@@ -16,7 +16,7 @@ jobs:
           tags: ${{ secrets.APP_NAME }}
           outputs: type=docker,dest=/tmp/${{ secrets.APP_NAME }}.tar
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ secrets.APP_NAME }}
           path: /tmp/${{ secrets.APP_NAME }}.tar
