@@ -9,7 +9,7 @@ export const corsMiddleware: CorsMiddleware = (allowedOrigins) => (req, res, nex
     res.header('Access-Control-Allow-Origin', '*');
   }
 
-  const isAllowedOrigin = origin && allowedOrigins?.includes(origin);
+  const isAllowedOrigin = !!origin && allowedOrigins?.includes(origin);
   if (isAllowedOrigin) {
     res.header('Access-Control-Allow-Origin', origin);
   }

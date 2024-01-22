@@ -9,6 +9,8 @@ RUN npm run build
 
 FROM node:20.9-bullseye-slim
 
+ENV IS_DOCKER=true
+
 WORKDIR /app
 COPY --from=build /app ./
 
