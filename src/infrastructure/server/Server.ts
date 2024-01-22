@@ -34,7 +34,7 @@ export class Server {
     this.app.use(this.router.router);
   };
 
-  start = (port: number | string, callback?: () => void): void => {
-    this.app.listen(port, callback);
+  start = (port: number | string, callback?: () => void) => {
+    return this.app.listen(port, callback);
   };
 }

@@ -1,1 +1,3 @@
-export const CORS_WHITELIST = ['https://frontend-app-url'];
+export const FRONTEND_APP_ORIGIN = 'https://frontend-app-url';
+
+export const CORS_WHITELIST = [FRONTEND_APP_ORIGIN];
