@@ -7,12 +7,12 @@ import { DogRepositoryImpl } from '@src/infrastructure/repositories/DogRepositor
 import { InternalServerError } from '@src/errors/InternalServerError/InternalServerError';
 
 import { mockDog } from '@src/tests/fixtures/MockEntities/MockDog';
-import { useMongoTestingEnvironment } from '@src/tests/testingUtils/MongoTestingEnvironment';
+import { useMongoTestEnvironment } from '@src/tests/testEnvironment/UseMongoTestEnv';
 
 describe('DogRepositoryImpl', () => {
   const dogRepository = new DogRepositoryImpl(DogModel);
 
-  useMongoTestingEnvironment([{ model: DogModel, seed: dogSeed }]);
+  useMongoTestEnvironment([{ model: DogModel, seed: dogSeed }]);
 
   describe('createDog method', () => {
     describe('WHEN creating a dog successfully', () => {

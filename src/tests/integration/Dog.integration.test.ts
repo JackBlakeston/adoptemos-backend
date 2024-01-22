@@ -13,11 +13,11 @@ import { omitProps } from '@src/utils/OmitProps/OmitProps';
 
 import { mockCreateDogDto } from '@src/tests/fixtures/MockEntities/MockDog';
 import { getErrorResponseObject, getSuccessResponseObject } from '@src/tests/fixtures/MockResponse';
-import { useMongoTestingEnvironment } from '@src/tests/testingUtils/MongoTestingEnvironment';
+import { useMongoTestEnvironment } from '@src/tests/testEnvironment/UseMongoTestEnv';
 import { spyAndMockError } from '@src/tests/testingUtils/ThrowError';
 
 describe('Dog integration test', () => {
-  useMongoTestingEnvironment([{ model: DogModel, seed: dogSeed }]);
+  useMongoTestEnvironment([{ model: DogModel, seed: dogSeed }]);
 
   const app = new Server().app;
 
