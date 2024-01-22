@@ -10,6 +10,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
       - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    command: mongod --port $MONGODB_PORT
     ports:
       - $MONGODB_PORT:$MONGODB_PORT
     volumes:
