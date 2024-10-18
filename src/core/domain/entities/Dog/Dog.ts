@@ -10,5 +10,4 @@ export class Dog extends BaseEntityWithUrl {
     super(data);
   }
 }
-
 export type DogConstructorData = EntityConstructorData<Dog>;
