@@ -16,5 +16,5 @@ runs:
       with:
         image-name: ${{ inputs.image-name }}
     - name: Start containers
-      run: docker-compose up -d
+      run: docker compose up -d
       shell: bash
